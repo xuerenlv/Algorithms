@@ -6,15 +6,7 @@ public class Merge_k_Sorted_Lists_23 {
 
 	}
 
-	// 单链表节点
-	class ListNode {
-		int val;
-		ListNode next;
 
-		ListNode(int x) {
-			val = x;
-		}
-	}
 
 	class Solution {
 		// 合并多个已排好序的单链表

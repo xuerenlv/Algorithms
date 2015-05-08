@@ -67,7 +67,7 @@ public class BubleSort {
 		// --------------------------opt-------------------------------------------
 		start = System.currentTimeMillis();
 
-		int s1[] = optBubleSort(v);
+//		int s1[] = optBubleSort(v);
 
 		end = System.currentTimeMillis();
 		System.out.println("naiveBubleSort  所花时间：" + (end - start));
