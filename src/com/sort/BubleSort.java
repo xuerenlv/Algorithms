@@ -67,7 +67,7 @@ public class BubleSort {
 		// --------------------------opt-------------------------------------------
 		start = System.currentTimeMillis();
 
-//		int s1[] = optBubleSort(v);
+		int s1[] = optBubleSort(v);
 
 		end = System.currentTimeMillis();
 		System.out.println("naiveBubleSort  所花时间：" + (end - start));
@@ -75,6 +75,7 @@ public class BubleSort {
 
 		System.out.println("************************************************");
 		System.out.println(Arrays.toString(s));
+		System.out.println(Arrays.toString(s1));
 		System.out.println("************************************************");
 	}
 
@@ -102,6 +103,7 @@ public class BubleSort {
 
 		boolean swap_ornot = false;
 		for (i = 0; i < len - 1; i++) {
+			swap_ornot=false;
 			for (j = len - 1; j > i; j--) {
 				if (v[j] < v[j - 1]) {
 					swap = v[j];
