@@ -1,4 +1,4 @@
-package com.leetcode.failed;
+package com.leetcode.graph;
 
 import java.util.Arrays;
 import java.util.Stack;

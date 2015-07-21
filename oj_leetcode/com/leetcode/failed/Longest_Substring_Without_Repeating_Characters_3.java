@@ -8,8 +8,13 @@ public class Longest_Substring_Without_Repeating_Characters_3 {
 
 	public static void main(String[] args) {
 		// String s = "abcabcbb";
-		String s = "cdd";
-		System.out.println(new Solution_Longest_Substring_Without_Repeating_Characters_3().lengthOfLongestSubstring(s));
+//		String s = "cdd";
+//		System.out.println(new Solution_Longest_Substring_Without_Repeating_Characters_3().lengthOfLongestSubstring(s));
+		
+		List<Integer> in_a = new ArrayList<Integer>();
+		in_a.add(1);
+		in_a.add(2);
+		System.out.println(in_a.get(0));
 	}
 
 }
