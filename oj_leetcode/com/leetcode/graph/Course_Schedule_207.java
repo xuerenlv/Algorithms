@@ -78,28 +78,28 @@ class Solution_Course_Schedule_207 {
 		// check if there's a cycle in the graph
 		boolean isCyclic() {
 			boolean[] visited = new boolean[n];
-			boolean[] stack = new boolean[n];
+			boolean[] visited_2 = new boolean[n];
 
 			for (int u = 0; u < n; u++)
-				if (dfs(u, visited, stack))
+				if (dfs(u, visited, visited_2))
 					return true;
 
 			return false;
 		}
 
-		boolean dfs(int u, boolean[] visited, boolean[] stack) {
+		boolean dfs(int u, boolean[] visited, boolean[] visited_2) {
 			// mark it as visited
 			visited[u] = true;
-			stack[u] = true;
+			visited_2[u] = true;
 
 			// check all its neighbors
 			for (int v = 0; v < n; v++)
 				if (matrix[u][v] > 0)
-					if (stack[v] == true || (visited[v] == false && dfs(v, visited, stack)))
+					if (visited_2[v] == true || (visited[v] == false && dfs(v, visited, visited_2)))
 						return true;
 
 			// remove the vertex from recursion stack
-			stack[u] = false;
+			visited_2[u] = false;
 
 			return false;
 		}
