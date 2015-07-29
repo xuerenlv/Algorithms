@@ -20,6 +20,8 @@ public class Course_Schedule_II_210 {
 class Solution_Course_Schedule_II_210 {
 	public int[] findOrder(int numCourses, int[][] prerequisites) {
 
+		
+		return  new int[1];
 	}
 
 	// Time Limit Exceeded
