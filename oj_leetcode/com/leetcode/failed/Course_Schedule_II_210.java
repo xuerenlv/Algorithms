@@ -1,6 +1,10 @@
 package com.leetcode.failed;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Course_Schedule_II_210 {
 
@@ -18,10 +22,41 @@ public class Course_Schedule_II_210 {
 }
 
 class Solution_Course_Schedule_II_210 {
+	// 邻接矩阵有问题，下面尝试邻接表
+	// 建立入边表
+	// Time Limit Exceeded
 	public int[] findOrder(int numCourses, int[][] prerequisites) {
+		List<Set<Integer>> adjLists = new ArrayList<Set<Integer>>();
+		for (int i = 0; i < numCourses; i++) {
+			adjLists.add(new HashSet<Integer>());
+		}
+		for (int i = 0; i < prerequisites.length; i++) {
+			adjLists.get(prerequisites[i][1]).add(prerequisites[i][0]);
+		}
 
-		
-		return  new int[1];
+		ArrayList<Integer> re = new ArrayList<>();
+		int index = 0;
+		while (index < numCourses) {
+			boolean no_in = false;
+			int i = 0;
+			for (; i < numCourses; i++) {
+				if (adjLists.get(i).size() == 0 || re.containsAll(adjLists.get(i))) {
+					no_in = true;
+				}
+			}
+			if (no_in == false) {
+				return new int[numCourses];
+			} else {
+				re.add(i);
+				index++;
+			}
+		}
+		int[] re_s = new int[numCourses];
+		int i = 0;
+		for (int in : re) {
+			re_s[i++] = in;
+		}
+		return re_s;
 	}
 
 	// Time Limit Exceeded

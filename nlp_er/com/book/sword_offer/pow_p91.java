@@ -21,8 +21,17 @@ class Pow {
 			invalid_input = true;
 			return 0.0;
 		}
-
+		if (equal(base, 1.0)) {
+			return 1.0;
+		}
 		int abs_exp = exp < 0 ? -1 * exp : exp;
+		if (equal(base, -1.0)) {
+			if ((abs_exp & 1) == 0) {
+				return 1.0;
+			} else {
+				return -1.0;
+			}
+		}
 		double re = pow_with_unsigned_exp(base, abs_exp);
 
 		if (exp < 0) {
@@ -34,22 +43,22 @@ class Pow {
 
 	double pow_with_unsigned_exp(double base, int exp) {
 		double re = 1.0;
-//		for (int i = 1; i <= exp; i++) {
-//			re *= base;
-//		}
-		if(exp==0){
+		// for (int i = 1; i <= exp; i++) {
+		// re *= base;
+		// }
+		if (exp == 0) {
 			return 1.0;
 		}
-		if(exp==1){
+		if (exp == 1) {
 			return base;
 		}
-		
-		re = pow_with_unsigned_exp(base, exp>>1);
+
+		re = pow_with_unsigned_exp(base, exp >> 1);
 		re *= re;
-		if((exp & 1) == 1){
-			re*=base;
+		if ((exp & 1) == 1) {
+			re *= base;
 		}
-		
+
 		return re;
 	}
 
