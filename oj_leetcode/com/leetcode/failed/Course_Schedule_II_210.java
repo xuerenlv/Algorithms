@@ -21,6 +21,10 @@ public class Course_Schedule_II_210 {
 
 }
 
+// 邻接矩阵有问题，下面尝试邻接表
+// 建立入边表
+// Time Limit Exceeded
+
 class Solution_Course_Schedule_II_210 {
 	// 邻接矩阵有问题，下面尝试邻接表
 	// 建立入边表
