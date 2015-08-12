@@ -30,7 +30,6 @@ public class Reorder_List_143 {
 
 class Solution_Reorder_List_143 {
 
-	// 不明白为何不可以返回
 	public void reorderList(ListNode head) {
 		int len = 0;
 		for (ListNode p = head; p != null; p = p.next) {
@@ -48,13 +47,15 @@ class Solution_Reorder_List_143 {
 			re_list = s;
 		}
 
-		ListNode re = new ListNode(0);
+		ListNode re = head;
 		ListNode re_tail = re;
 		p = head;
 		while (true) {
-			re_tail.next = new ListNode(p.val);
+			if (p != head) {
+				re_tail.next = new ListNode(p.val);
+				re_tail = re_tail.next;
+			}
 			p = p.next;
-			re_tail = re_tail.next;
 			len--;
 			if (len == 0)
 				break;
@@ -65,13 +66,5 @@ class Solution_Reorder_List_143 {
 			if (len == 0)
 				break;
 		}
-
-		System.out.println("next______________aaas");
-		for (p = re.next; p != null; p = p.next) {
-			System.out.print(p.val + "   ");
-		}
-		System.out.println();
-
-		head = re.next;
 	}
 }

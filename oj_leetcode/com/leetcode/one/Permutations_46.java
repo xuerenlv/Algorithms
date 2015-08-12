@@ -6,7 +6,12 @@ import java.util.List;
 public class Permutations_46 {
 
 	public static void main(String[] args) {
+		int[] nums = { 1, 2, 3,4,5 };
 
+		List<List<Integer>> re_list = new Solution_Permutations_46().permute(nums);
+		for (List<Integer> in_list : re_list) {
+			System.out.println(in_list.toString());
+		}
 	}
 
 }
