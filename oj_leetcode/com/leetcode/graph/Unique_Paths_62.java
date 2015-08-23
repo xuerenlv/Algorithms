@@ -3,7 +3,7 @@ package com.leetcode.graph;
 public class Unique_Paths_62 {
 
 	public static void main(String[] args) {
-		System.out.println(new Solution_Unique_Paths_62().uniquePaths(23, 12));
+		System.out.println(new Solution_Unique_Paths_62().uniquePaths(3, 5));
 		System.out.println(new Solution_Unique_Paths_62().uniquePaths_overtime(23, 12));
 	}
 
