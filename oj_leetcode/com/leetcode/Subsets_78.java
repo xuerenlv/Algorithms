@@ -1,20 +1,23 @@
-package com.leetcode.failed;
+package com.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Subsets_II_90 {
+public class Subsets_78 {
 
 	public static void main(String[] args) {
-
+		int[] nums = {1,2,3};
+		List<List<Integer>> re = new Solution_Subsets_78().subsets(nums);
+		for(List<Integer> in:re){
+			System.out.println(in.toString());
+		}
 	}
 
 }
-
-class Solution_Subsets_II_90 {
-	public List<List<Integer>> subsetsWithDup(int[] nums) {
-		List<Integer> in = new ArrayList<>();
+class Solution_Subsets_78 {
+    public List<List<Integer>> subsets(int[] nums) {
+    	List<Integer> in = new ArrayList<>();
     	List<List<Integer>> re = new ArrayList<>();
     	
     	Arrays.sort(nums);
@@ -25,8 +28,7 @@ class Solution_Subsets_II_90 {
     
     void tran(int[] nums,int start,int end,List<Integer> in,List<List<Integer>> re){
     	if(start==end){
-    		if(!re.contains(in))
-    			re.add(new ArrayList<>(in));
+    		re.add(new ArrayList<>(in));
     		return;
     	}
     	
