@@ -1,4 +1,4 @@
-package com.leetcode.failed;
+package com.leetcode;
 
 import java.util.ArrayList;
 import java.util.List;
