@@ -30,7 +30,7 @@ class TrieNode {
 }
 
 class Trie {
-	private TrieNode root;
+	public TrieNode root;
 
 	public Trie() {
 		root = new TrieNode();
