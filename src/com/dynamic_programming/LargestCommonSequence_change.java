@@ -9,7 +9,7 @@ public class LargestCommonSequence_change {
 		long start, end;
 		start = System.currentTimeMillis();
 
-		System.out.println("长度: "+lcs_first(str1.toCharArray(), str1.length(), str2.toCharArray(), str2.length()));
+		System.out.println("长度: " + lcs_first(str1.toCharArray(), str1.length(), str2.toCharArray(), str2.length()));
 
 		end = System.currentTimeMillis();
 		System.out.println("所花时间：" + (end - start));
@@ -25,6 +25,16 @@ public class LargestCommonSequence_change {
 				if (s1[i] == s2[j]) {
 					if (i - 1 >= 0 && j - 1 >= 0) {
 						ji_hao[i][j] = ji_hao[i - 1][j - 1] + 1;
+					} else {
+						if (i - 1 >= 0) {
+							ji_hao[i][j] = ji_hao[i - 1][j];
+							continue;
+						}
+						if (j - 1 >= 0) {
+							ji_hao[i][j] = ji_hao[i][j - 1];
+							continue;
+						}
+						ji_hao[i][j] = 1;
 					}
 				} else {
 					if (i - 1 >= 0) {
@@ -53,11 +63,11 @@ public class LargestCommonSequence_change {
 			}
 		}
 
-		StringBuffer sb=new StringBuffer();
-		print_lcs(ji_hao, s1, len1 - 1, s2, len2 - 1,sb);
-		System.out.println(sb.toString()+"  "+sb.length());
+		StringBuffer sb = new StringBuffer();
+		print_lcs(ji_hao, s1, len1 - 1, s2, len2 - 1, sb);
+		System.out.println(sb.toString() + "  " + sb.length());
 
-		return max+1;
+		return max + 1;
 	}
 
 	// 打印出最长公共子序列

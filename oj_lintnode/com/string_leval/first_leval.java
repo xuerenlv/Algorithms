@@ -22,6 +22,9 @@ public class first_leval {
 
 }
 
+//
+
+
 // 最长公共子串 
 class Solution_5{
     /**
@@ -29,9 +32,51 @@ class Solution_5{
      * @return: the length of the longest common substring.
      */
     public int longestCommonSubstring(String A, String B) {
-    	
-    
-    }
+    	if(A==null || B==null)
+    		return 0;
+    	int len1 = A.length();
+    	int len2 = B.length();
+    	if(len1==0 || len2==0)
+    		return 0;
+    	char[] s1 = A.toCharArray();
+    	char[] s2 = B.toCharArray();
+    	int[][] ji_hao = new int[len1][len2];
+
+		int i, j;
+		for (i = 0; i < len1; i++) {
+			for (j = 0; j < len2; j++) {
+				if (s1[i] == s2[j]) {
+					if (i - 1 >= 0 && j - 1 >= 0) {
+						ji_hao[i][j] = ji_hao[i - 1][j - 1] + 1;
+					}else{
+					    if(i - 1 >= 0){
+					        ji_hao[i][j] = ji_hao[i - 1][j];
+					        continue;
+					    }
+					    if(j - 1 >= 0){
+					        ji_hao[i][j] = ji_hao[i][j-1];
+					        continue;
+					    }
+					    ji_hao[i][j] = 1;
+					}
+				} else {
+					ji_hao[i][j] = 0;
+				}
+			}
+		}
+
+		int max = 0;
+		for (i = 0; i < len1; i++) {
+			for (j = 0; j < len2; j++) {
+				if (ji_hao[i][j] > max) {
+					max = ji_hao[i][j];
+				}
+			}
+		}
+
+		return max;
+		}
+
 }
 
 // 乱序字符串
