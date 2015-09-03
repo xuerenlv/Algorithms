@@ -1,21 +1,120 @@
 package com.string_leval;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class first_leval {
 
 	public static void main(String[] args) {
-		String s = "python";
-		String t = "ttptpy";
-		System.out.println(new Solution_first_1().anagram(s, t));
+//		String s = "python";
+//		String t = "ttptpy";
+//		System.out.println(new Solution_first_1().anagram(s, t));
+		
+		
+		String[] str_s = {"tea","tea","eat"};
+		List<String> re = new Solution_first_4().anagrams(str_s);
+		System.out.println(re.toString());
+		
+		System.out.println(new Solution_first_4().sort_str(""));
 	}
 
 }
 
-// 
+// 最长公共子串 
+class Solution_5{
+    /**
+     * @param A, B: Two string.
+     * @return: the length of the longest common substring.
+     */
+    public int longestCommonSubstring(String A, String B) {
+    	
+    
+    }
+}
+
+// 乱序字符串
 class Solution_first_4 {
-	
+	/**
+	 * @param strs:
+	 *            A list of strings
+	 * @return: A list of strings
+	 */
+	public List<String> anagrams(String[] strs) {
+		List<String> re_list= new ArrayList<>();
+		Map<String, String> map_sort = new HashMap<>();
+		Map<String, Integer> double_str = new HashMap<>();
+		for(String str : strs){
+			map_sort.put(str, sort_str(str));
+			if(!double_str.containsKey(str)){
+				double_str.put(str, 1);
+			}else{
+				double_str.put(str, double_str.get(str)+1);
+			}
+		}
+		
+		Map<String, Integer> value_mark = new HashMap<>();
+		List<String> sorted_list = new ArrayList<>();
+		for(String sort_s : map_sort.values()){
+			if(!value_mark.containsKey(sort_s)){
+				value_mark.put(sort_s, 1);
+			}else{
+				sorted_list.add(sort_s);
+			}
+		}
+		
+		for(String str : map_sort.keySet()){
+			if(sorted_list.contains(map_sort.get(str)))
+				re_list.add(str);
+		}
+		
+//		int count_void = 0;
+//		for(String str : strs){
+//			if(str.equals("")){
+//				count_void++;
+//			}
+//		}
+//		if(count_void>1){
+//			for(int i=0;i<count_void;i++){
+//				re_list.add("");
+//			}
+//		}
+		
+		for(String str : double_str.keySet()){
+			if (double_str.get(str)>1) {
+				if(re_list.contains(str)){
+					for(int i=0;i<double_str.get(str)-1;i++)
+						re_list.add(str);
+				}else{
+					for(int i=0;i<double_str.get(str);i++)
+						re_list.add(str);
+				}
+			}
+		}
+		
+		return re_list;
+	}
+
+	String sort_str(String str) {
+		if (str == null)
+			return "";
+		if (str.length() <= 1)
+			return str;
+		char[] str_arr = str.toCharArray();
+		char temp;
+		for (int i = 0; i < str_arr.length - 1; i++) {
+			for (int j = i + 1; j < str_arr.length; j++) {
+				if (str_arr[i] > str_arr[j]) {
+					temp = str_arr[i];
+					str_arr[i] = str_arr[j];
+					str_arr[j] = temp;
+				}
+			}
+		}
+
+		return new String(str_arr);
+	}
 }
 
 // 字符串查找
