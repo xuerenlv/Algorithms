@@ -1,4 +1,4 @@
-package com.string_leval;
+package com.america_leval;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,8 +22,100 @@ public class first_leval {
 
 }
 
-//
+// 转换字符串到整数 
+class Solution_7 {
+    /**
+     * @param str: A string
+     * @return An integer
+     */
+    public int atoi(String str) {
+    	str=str.trim();
+		if(str.isEmpty())
+			return 0;
+		if(str.charAt(0)=='-' && str.length()==1)
+			return 0;
+		if(str.charAt(0)=='+' && str.length()==1)
+			return 0;
+		if(str.charAt(0)!='+' && str.charAt(0)!='-' && (str.charAt(0)<'0' || str.charAt(0)>'9'))
+			return 0;
 
+		int signal;
+		if(str.charAt(0)=='+' || (str.charAt(0)>='0' && str.charAt(0)<='9')){
+			signal=1;
+		}else{
+			signal=-1;
+		}
+		
+		
+		int sum=0;
+		int length=0;
+		if(!(str.charAt(0)=='+' || str.charAt(0)=='-' )){
+			for(int i=0;i<str.length();i++){
+				if(!(str.charAt(i)>='0' && str.charAt(i)<='9')){
+					break;
+				}
+				sum = (str.charAt(i)-'0')+sum*10;
+				length++;
+			}
+			
+		}else{
+			for(int i=1;i<str.length();i++){
+				if(!(str.charAt(i)>='0' && str.charAt(i)<='9')){
+					break;
+				}
+				sum = (str.charAt(i)-'0')+sum*10;
+				length++;
+			}
+		}
+		
+		if(sum<0 || (length>10)){
+			if(signal==-1){
+				return -2147483648 ;
+			}else{
+				return 2147483647 ;
+			}
+				
+		}else{
+			return sum*signal;
+		}
+    }
+}
+
+
+// 最长公共前缀 
+class Solution_6 {
+    /**
+     * @param strs: A list of strings
+     * @return: The longest common prefix
+     */
+    public String longestCommonPrefix(String[] strs) {
+    	if(strs.length==0)
+			return "";
+		String re="";
+		int i=0;
+		while(true){
+			if(i>=strs[0].length()) break;
+			char ch=strs[0].charAt(i);
+			
+			int index;
+			for(index=0;index < strs.length;index++){
+				if(i >= strs[index].length() || strs[index].charAt(i) !=ch){
+					break;
+				}
+			}
+			
+			
+			if(index == strs.length){
+				i++;
+				re+=ch;
+			}else{
+				break;
+			}
+		}
+		
+		return re;
+    }
+}
 
 // 最长公共子串 
 class Solution_5{

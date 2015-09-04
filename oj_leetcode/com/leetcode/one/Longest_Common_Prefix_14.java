@@ -19,8 +19,6 @@ class Solution_Longest_Common_Prefix_14 {
 			if(i>=strs[0].length()) break;
 			char ch=strs[0].charAt(i);
 			
-//			System.out.println(ch);
-			
 			int index;
 			for(index=0;index < strs.length;index++){
 				if(i >= strs[index].length() || strs[index].charAt(i) !=ch){
