@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class second_leval {
 
@@ -35,7 +36,20 @@ class Solution_second_leval_13 {
      *          and the index of the last number
      */
     public ArrayList<Integer> subarraySumClosest(int[] nums) {
+    	Map<Integer, Integer> index_sum = new HashMap<>();
+    	int sum = 0;
+    	for(int i=0;i<nums.length;i++){
+    		index_sum.put(i, sum+nums[i]);
+    	}
     	
+    	int gap = Integer.MAX_VALUE;
+    	Stack<Integer> re_stack = new Stack<>();
+    	
+    	for(int i=0;i<nums.length;i++){
+    		for(int j=i+Solution_second_leval_1 ;j<nums.length;j++){
+    			
+    		}
+    	}
     }
 }
 
