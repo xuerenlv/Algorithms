@@ -1,6 +1,6 @@
 package com.america_leval;
 
-import com.nlp.thread.contain;
+import java.util.ArrayList;
 
 public class Third_leval {
 
@@ -12,6 +12,138 @@ public class Third_leval {
 
 }
 
+// 搜索旋转排序数组 II
+class Solution_Third_leval_12 {
+	/**
+	 * param A : an integer ratated sorted array and duplicates are allowed
+	 * param target : an integer to be search return : a boolean
+	 */
+	public boolean search(int[] nums, int target) {
+		int left = 0, right = nums.length - 1;
+		while (left <= right) {
+			int mid = (left + right) >> 1;
+			if (nums[mid] == target)
+				return true;
+			if (nums[left] < nums[mid]) {
+				if (target <= nums[mid] && target >= nums[left])
+					right = mid - 1;
+				else
+					left = mid + 1;
+			} else if (nums[left] > nums[mid]) {
+				if (target >= nums[left] || target <= nums[mid])
+					right = mid - 1;
+				else
+					left = mid + 1;
+			} else
+				left++;
+		}
+		return false;
+	}
+}
+
+// 搜索区间
+class Solution_Third_leval_11 {
+	/**
+	 * @param A
+	 *            : an integer sorted array
+	 * @param target
+	 *            : an integer to be inserted return : a list of length 2,
+	 *            [index1, index2]
+	 */
+	public ArrayList<Integer> searchRange(ArrayList<Integer> A, int target) {
+		ArrayList<Integer> re = new ArrayList<>();
+		int l = 0;
+		int r = A.size() - 1;
+		int mid = 0;
+		while (l <= r) {
+			mid = (l + r) >> 1;
+			if (A.get(mid) == target) {
+				l = mid;
+				r = mid;
+				while (l > 0 && A.get(l - 1) == target)
+					l--;
+				while (r < A.size() - 1 && A.get(r + 1) == target)
+					r++;
+				re.add(l);
+				re.add(r);
+				return re;
+			}
+			if (A.get(mid) > target) {
+				r = mid - 1;
+			} else {
+				l = mid + 1;
+			}
+		}
+		re.add(-1);
+		re.add(-1);
+		return re;
+	}
+}
+
+// 搜索旋转排序数组
+class Solution_Third_leval_10 {
+	/**
+	 * @param A
+	 *            : an integer rotated sorted array
+	 * @param target
+	 *            : an integer to be searched return : an integer
+	 */
+	public int search(int[] nums, int target) {
+		int left = 0, right = nums.length - 1;
+		while (left <= right) {
+			int mid = (left + right) >> 1;
+			if (nums[mid] == target)
+				return mid;
+			if (nums[left] < nums[mid]) {
+				if (target <= nums[mid] && target >= nums[left])
+					right = mid - 1;
+				else
+					left = mid + 1;
+			} else if (nums[left] > nums[mid]) {
+				if (target >= nums[left] || target <= nums[mid])
+					right = mid - 1;
+				else
+					left = mid + 1;
+			} else
+				left++;
+		}
+		return -1;
+	}
+}
+
+// 第一个错误的代码版本
+/**
+ * public class VersionControl { public static boolean isBadVersion(int k); }
+ * you can use VersionControl.isBadVersion(k) to judge whether the kth code
+ * version is bad or not.
+ */
+class VersionControl {
+	public static boolean isBadVersion(int k) {
+		return false;
+	}
+}
+
+class Solution_Third_leval_9 {
+	/**
+	 * @param n:
+	 *            An integers.
+	 * @return: An integer which is the first bad version.
+	 */
+	public int findFirstBadVersion(int n) {
+		if (n <= 0)
+			return 0;
+		int l = 1, r = n;
+		while (l < r) {
+			int mid = (l + r) >> 1;
+			if (VersionControl.isBadVersion(mid))
+				r = mid;
+			else
+				l = mid + 1;
+		}
+		return l;
+	}
+}
+
 // 寻找峰值
 class Solution_Third_leval_Third_leval_8 {
 	/**
@@ -20,6 +152,10 @@ class Solution_Third_leval_Third_leval_8 {
 	 * @return: return any of peek positions.
 	 */
 	public int findPeak(int[] A) {
+		for (int i = 1; i < A.length - 1; i++)
+			if (A[i] > A[i - 1] && A[i] > A[i + 1])
+				return i;
+		return 0;
 	}
 }
 
