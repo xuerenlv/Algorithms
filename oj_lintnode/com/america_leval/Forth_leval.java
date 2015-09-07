@@ -3,7 +3,7 @@ package com.america_leval;
 public class Forth_leval {
 
 	public static void main(String[] args) {
-		System.out.println(1 ^ -1);
+		System.out.println(-512>>100);
 	}
 
 }
@@ -15,8 +15,59 @@ class Solution_Forth_leval_5 {
      *@param i, j: Two bit positions
      *return: An integer
      */
-    public int updateBits(int n, int m, int i, int j) {
-    	
+	public int updateBits(int n, int m, int i, int j) {
+		int flag = 1;
+        String str_m = "";
+        String str_n = "";
+
+        while(flag>0){
+            if( (m & flag) == 0)
+                str_m+='0';
+            else{
+                str_m+='1';
+            }
+            flag = flag*2;
+        }
+
+        flag = 1;
+        while(flag>0){
+            if( (n & flag) == 0)
+                str_n+='0';
+            else{
+                str_n+='1';
+            }
+            flag = flag*2;
+        }
+        
+        char[] n_char = new char[32];
+        char[] n_char_temp = str_n.toCharArray();
+        for(int t=0;t<n_char_temp.length;t++)
+        		n_char[t] = n_char_temp[t];
+        char[] m_char = new char[32]; 
+        		str_m.toCharArray();
+        for(int k = i; k <= j; k++){
+            n_char[k] = m_char[k-i];
+
+        }
+
+        int result = 0;
+        int count = 1;
+        for(int p = 0; p < str_n.length(); p++){
+            if(n_char[p] == '1')
+                result += count;
+            count*=2;
+        }
+
+        return result;
+	}
+	
+	// 负数的时候，出错
+    public int updateBits__wrong(int n, int m, int i, int j) {
+    	int a = (n<<(32-i-1))>>>(32-i-1);
+    	int b = m<<i;
+    	int c = a|b;
+    	int d = (n>>>(j+1))<<(j+1);
+    	return d|c;
     }
 }
 
