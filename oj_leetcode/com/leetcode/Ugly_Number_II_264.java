@@ -1,4 +1,4 @@
-package com.leetcode.failed;
+package com.leetcode;
 
 public class Ugly_Number_II_264 {
 
