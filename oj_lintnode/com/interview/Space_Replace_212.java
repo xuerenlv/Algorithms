@@ -1,4 +1,4 @@
-package com.america_leval;
+package com.interview;
 
 public class Space_Replace_212 {
 
