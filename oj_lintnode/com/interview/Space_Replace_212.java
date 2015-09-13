@@ -17,13 +17,11 @@ class Solution_Space_Replace_212 {
 	 * @return: The true length of new string
 	 */
 	public int replaceBlank(char[] string, int length) {
-
 		int count_blank = 0;
 		for (int i = 0; i < length; i++) {
 			if (string[i] == ' ')
 				count_blank++;
 		}
-
 		if (count_blank == 0) {
 			return length;
 		} else {
