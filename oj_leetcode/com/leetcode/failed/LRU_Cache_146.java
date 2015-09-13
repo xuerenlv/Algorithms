@@ -1,11 +1,7 @@
 package com.leetcode.failed;
 
-import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-
-import com.sun.accessibility.internal.resources.accessibility;
 
 public class LRU_Cache_146 {
 
