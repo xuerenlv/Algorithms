@@ -11,7 +11,7 @@ public class The_Skyline_Problem_218 {
 
 
 class Solution_The_Skyline_Problem_218 {
-    public List<int[]> getSkyline(int[][] buildings) {
-        
-    }
+//    public List<int[]> getSkyline(int[][] buildings) {
+//        
+//    }
 }
