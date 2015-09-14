@@ -1,4 +1,4 @@
-package com.leetcode.failed;
+package com.leetcode;
 
 public class Power_of_Two_231 {
 
