@@ -3,9 +3,6 @@ package com.leetcode.link;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.america_leval.second_leval;
-import com.sun.accessibility.internal.resources.accessibility;
-
 public class Binary_Tree_Paths_257 {
 
 	public static void main(String[] args) {
