@@ -18,7 +18,9 @@ class Solution_Expression_Add_Operators_282 {
 		return res;
 	}
 
-	void addOperatorsDFS(String num, int target, int diff, int curNum, String out, List<String> res) {
+	// 比如2+3*2，即将要运算到乘以2的时候，上次循环的curNum = 5, diff = 3,
+	// 而如果我们要算这个乘2的时候，新的变化值diff应为3*2=6，而我们要把之前+3操作的结果去掉，再加上新的diff，即(5-3)+6=8，即为新表达式2+3*2的值
+	void addOperatorsDFS(String num, int target, long diff, long curNum, String out, List<String> res) {
 		if (num.length() == 0 && curNum == target) {
 			res.add(out);
 		}
@@ -28,14 +30,12 @@ class Solution_Expression_Add_Operators_282 {
 				return;
 			String next = num.substring(i);
 			if (out.length() > 0) {
-				addOperatorsDFS(next, target, Integer.parseInt(cur), curNum + Integer.parseInt(cur), out + "+" + cur,
-						res);
-				addOperatorsDFS(next, target, -Integer.parseInt(cur), curNum - Integer.parseInt(cur), out + "-" + cur,
-						res);
-				addOperatorsDFS(next, target, diff * Integer.parseInt(cur),
-						(curNum - diff) + diff * Integer.parseInt(cur), out + "*" + cur, res);
+				addOperatorsDFS(next, target, Long.parseLong(cur), curNum + Long.parseLong(cur), out + "+" + cur, res);
+				addOperatorsDFS(next, target, -Long.parseLong(cur), curNum - Long.parseLong(cur), out + "-" + cur, res);
+				addOperatorsDFS(next, target, diff * Long.parseLong(cur), (curNum - diff) + diff * Long.parseLong(cur),
+						out + "*" + cur, res);
 			} else {
-				addOperatorsDFS(next, target, Integer.parseInt(cur), Integer.parseInt(cur), cur, res);
+				addOperatorsDFS(next, target, Long.parseLong(cur), Long.parseLong(cur), cur, res);
 			}
 		}
 	}
