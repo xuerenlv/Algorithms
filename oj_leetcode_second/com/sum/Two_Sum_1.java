@@ -2,6 +2,7 @@ package com.sum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Two_Sum_1 {
 
@@ -12,6 +13,24 @@ public class Two_Sum_1 {
 }
 
 class Solution_Two_Sum_1 {
+	
+	// 使用map存放位置,速度确实会快一些
+	public int[] twoSum_map(int[] nums, int target) {
+		HashMap<Integer, Integer> maping = new HashMap<Integer, Integer>();
+
+		int[] re = new int[2];
+		for (int i = 0; i < nums.length; i++) {
+			if(maping.containsKey(target-nums[i])){
+				re[0] = maping.get(target-nums[i])+1;
+				re[1] = i+1;
+				break;
+			}else{
+				maping.put(nums[i], i);
+			}
+		}
+
+		return re;
+	}
 
 	// 精简，还不用使用 map 来保存位序
 	public int[] twoSum_hash(int[] nums, int target) {
