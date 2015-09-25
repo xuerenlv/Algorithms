@@ -5,12 +5,12 @@ public class Reverse_Words_in_a_String_151 {
 	public static void main(String[] args) {
 		String str = "hi!";
 
-		System.out.println(new Solution().reverseWords_accepted_1(str));
-		System.out.println(new Solution().reverseWords_accepted_2(str));
+		System.out.println(new Solution_Reverse_Words_in_a_String_151().reverseWords_accepted_1(str));
+		System.out.println(new Solution_Reverse_Words_in_a_String_151().reverseWords_accepted_2(str));
 	}
 }
 
-class Solution {
+class Solution_Reverse_Words_in_a_String_151 {
 	// 这个比较好，在O(n)的情况下逆转
 	public String reverseWords_accepted_1(String s) {
 		String rs = "";
