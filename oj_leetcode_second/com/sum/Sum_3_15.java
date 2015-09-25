@@ -3,9 +3,7 @@ package com.sum;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Sum_3_15 {
 
@@ -18,24 +16,27 @@ public class Sum_3_15 {
 				-6 };
 
 		List<List<Integer>> re = new Solution_Sum_3_15_second().threeSum_3(S);
-		List<List<Integer>> re_my = new Solution_Sum_3_15().threeSum_my_overtime(S);
+		// List<List<Integer>> re_my = new
+		// Solution_Sum_3_15().threeSum_my_overtime(S);
 
-		if (re.size() != re_my.size()) {
-			System.out.println("different");
-		} else {
-			for (int i = 0; i < re.size(); i++) {
-				List<Integer> in = re.get(i);
-				List<Integer> in_my = re_my.get(i);
-
-				System.out.println(in.toString() + "   " + in_my.toString());
-			}
+		// if (re.size() != re_my.size()) {
+		// System.out.println("different");
+		// } else {
+		// for (int i = 0; i < re.size(); i++) {
+		// List<Integer> in = re.get(i);
+		// List<Integer> in_my = re_my.get(i);
+		//
+		// System.out.println(in.toString() + " " + in_my.toString());
+		// }
+		// }
+		for (List<Integer> in : re) {
+			System.out.println(in.toString());
 		}
 		System.out.println("true true true true");
 
 	}
 
 }
-
 
 class Solution_Sum_3_15_second {
 
@@ -48,15 +49,13 @@ class Solution_Sum_3_15_second {
 		for (int i = 0; i <= nums.length - 3 && nums[i] <= 0; i++) {
 			if (i > 0 && nums[i] == nums[i - 1])
 				continue;
-			
 			int start = i + 1;
 			int end = nums.length - 1;
 			while (start < end) {
 				if (nums[start] + nums[end] + nums[i] == 0) {
-					if (re.size()>0 && re.get(re.size() - 1).get(0) == nums[i] && re.get(re.size() - 1).get(1) == nums[start]
-							&& re.get(re.size() - 1).get(2) == nums[end]) {
-						continue;
-					} else {
+					if (!(re.size() > 0 && re.get(re.size() - 1).get(0) == nums[i]
+							&& re.get(re.size() - 1).get(1) == nums[start]
+							&& re.get(re.size() - 1).get(2) == nums[end])) {
 						List<Integer> item = new ArrayList<Integer>();
 						item.add(nums[i]);
 						item.add(nums[start]);
@@ -82,11 +81,10 @@ class Solution_Sum_3_15_second {
 		if (nums == null)
 			return re;
 		Arrays.sort(nums);
-
+		
 		for (int i = 0; i <= nums.length - 3 && nums[i] <= 0; i++) {
 			if (i > 0 && nums[i] == nums[i - 1])
 				continue;
-
 			ArrayList<Integer> already_visited = new ArrayList<>();
 			for (int j = i + 1; j < nums.length; j++) {
 				if (already_visited.contains(-nums[i] - nums[j])) {
@@ -149,7 +147,8 @@ class Solution_Sum_3_15 {
 				if (nums[front] + nums[tail] == nums[index] * (-1)) {
 					// 判断是否重复
 					if (!(result.size() != 0 && result.get(result.size() - 1).get(0) == nums[index]
-							&& result.get(result.size() - 1).get(1) == nums[front] && result.get(result.size() - 1).get(2) == nums[tail])) {
+							&& result.get(result.size() - 1).get(1) == nums[front]
+							&& result.get(result.size() - 1).get(2) == nums[tail])) {
 
 						List<Integer> item = new ArrayList<Integer>();
 						item.add(nums[index]);
@@ -170,7 +169,7 @@ class Solution_Sum_3_15 {
 		return result;
 	}
 
-	//我的答案也是正确的，为何超时
+	// 我的答案也是正确的，为何超时
 	public List<List<Integer>> threeSum_my_overtime(int[] nums) {
 		List<List<Integer>> re = new ArrayList<List<Integer>>();
 
@@ -203,4 +202,3 @@ class Solution_Sum_3_15 {
 		return re;
 	}
 }
-
