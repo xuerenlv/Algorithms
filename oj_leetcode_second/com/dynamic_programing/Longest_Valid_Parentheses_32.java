@@ -1,12 +1,13 @@
-package com.string_manu;
+package com.dynamic_programing;
 
 import java.util.Stack;
 
 public class Longest_Valid_Parentheses_32 {
 
 	public static void main(String[] args) {
-		String s = ")()((()(())";
+		String s = ")(()(()(((())(((((()()))((((()()(()()())())())()))()()()())(())()()(((()))))()((()))(((())()((()()())((())))(())))())((()())()()((()((())))))((()(((((()((()))(()()(())))((()))()))())";
 		System.out.println(new Solution_Longest_Valid_Parentheses_32().longestValidParentheses(s));
+		System.out.println(new Solution_Longest_Valid_Parentheses_32().longestValidParentheses_overtime(s));
 	}
 
 }
@@ -19,7 +20,7 @@ class Solution_Longest_Valid_Parentheses_32 {
 		Stack<Integer> stack = new Stack<>();
 		for (int i = 0; i < len; i++) {
 			if (s.charAt(i) == '(') {
-				stack.add(i);
+				stack.add(i); // stack里面装的都是左括号
 			}
 			if (s.charAt(i) == ')' && !stack.isEmpty()) {
 				flag[i] = true;
@@ -41,6 +42,7 @@ class Solution_Longest_Valid_Parentheses_32 {
 		return maxlen;
 	}
 
+	// 递归的想法， 经过验证，是对的
 	public int longestValidParentheses_overtime(String s) {
 		if (is_valid(s))
 			return s.length();
@@ -48,21 +50,16 @@ class Solution_Longest_Valid_Parentheses_32 {
 				longestValidParentheses(s.substring(0, s.length() - 1)));
 	}
 
+	// 判断 string 是不是 可行的
 	boolean is_valid(String s) {
 		Stack<Character> stack = new Stack<>();
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
 
-			switch (c) {
-			case '(':
+			if (c == '(') {
 				stack.push(c);
-				break;
-
-			default:
-				if (stack.isEmpty())
-					return false;
-				char d = stack.pop();
-				if (d == '(') {
+			} else {
+				if (!stack.isEmpty() && stack.pop() == '(') {
 					continue;
 				} else {
 					return false;
