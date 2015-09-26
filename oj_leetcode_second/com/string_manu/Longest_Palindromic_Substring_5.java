@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 public class Longest_Palindromic_Substring_5 {
 
@@ -23,13 +23,8 @@ class Solution_Longest_Palindromic_Substring_5 {
 			while (true) {
 				int start = c - i;
 				int end = c + i;
-
-				if (start < 0 || end >= s.length())
+				if (start < 0 || end >= s.length() || s.charAt(start) != s.charAt(end))
 					break;
-
-				if (s.charAt(start) != s.charAt(end))
-					break;
-
 				len = end - start + 1;
 				i += 1;
 			}
@@ -46,13 +41,8 @@ class Solution_Longest_Palindromic_Substring_5 {
 			while (true) {
 				int start = c - i;
 				int end = c + i - 1;
-
-				if (start < 0 || end >= s.length())
+				if (start < 0 || end >= s.length() || s.charAt(start) != s.charAt(end))
 					break;
-
-				if (s.charAt(start) != s.charAt(end))
-					break;
-
 				len = end - start + 1;
 				i += 1;
 			}

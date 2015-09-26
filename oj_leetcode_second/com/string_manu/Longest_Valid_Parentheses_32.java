@@ -1,6 +1,5 @@
-package com.leetcode;
+package com.string_manu;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 public class Longest_Valid_Parentheses_32 {
