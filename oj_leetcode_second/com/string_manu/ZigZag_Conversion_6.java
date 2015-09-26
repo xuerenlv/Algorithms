@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 public class ZigZag_Conversion_6 {
 
@@ -37,18 +37,12 @@ class Solution_ZigZag_Conversion_6 {
 		int bian=0;
 		while (i < s.length()) {
 			bian =i/(2*numRows-2);			//取整，得到是第几遍
-			int jishu =i-bian*(2*numRows-2);
-			
-			
-			
+			int jishu =i-bian*(2*numRows-2);	
 			if(jishu > numRows-1){
 				j=numRows-1 - (jishu-(numRows-1));
 			}else{
 				j = jishu % numRows;	
 			}
-//			System.out.println(jishu+" * "+j);
-//			System.out.println(i+"  "+j);
-			
 			h_strs[j] = h_strs[j] + s.charAt(i);
 			i++;
 		}
