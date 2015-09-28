@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.math_question;
 
 public class Palindrome_Number_9 {
 
@@ -19,6 +19,8 @@ class Solution_Palindrome_Number_9 {
 			if (x / i == 0) {
 				i = i / 10;
 			} else {
+				// (x / i) % 10 从高位向低位，取最后一个数字
+				// (x % j) / (j / 10) 从低位向高位，取第一个数字
 				if ((x / i) % 10 != (x % j) / (j / 10)) {
 					return false;
 				} else {
