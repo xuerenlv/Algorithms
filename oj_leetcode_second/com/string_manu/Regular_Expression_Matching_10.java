@@ -16,6 +16,7 @@ class Solution_Regular_Expression_Matching_10 {
 			return s.length() == 0;
 
 		if (p.length() >= 2 && p.charAt(1) == '*') {
+			// '*' Matches zero or more of the preceding element.
 			while (s.length() != 0 && (p.charAt(0) == '.' || s.charAt(0) == p.charAt(0))) {
 				if (isMatch(s, p.substring(2)))
 					return true;
