@@ -1,5 +1,4 @@
-package com.leetcode;
-
+package com.array_question;
 
 public class Container_With_Most_Water_11 {
 
@@ -10,6 +9,7 @@ public class Container_With_Most_Water_11 {
 }
 
 class Solution_Container_With_Most_Water_11 {
+	// two pointers
 	public int maxArea_accepted(int[] height) {
 		int i = 0;
 		int j = height.length - 1;
@@ -34,14 +34,16 @@ class Solution_Container_With_Most_Water_11 {
 	// return max_naive(height, 0, height.length - 1, mapping_r);
 	// }
 	//
-	// int max_naive(int[] height, int start, int end, HashMap<Integer, Integer> r) {
+	// int max_naive(int[] height, int start, int end, HashMap<Integer, Integer>
+	// r) {
 	// if (start + 1 == end)
 	// return (end-start)*Math.min(start, end);
 	// if (r.containsKey(start + end))
 	// return r.get(start + end);
 	// int get = 0;
 	// for (int k = start + 1; k < end; k++) {
-	// get = Math.max(get, max_naive(height, start, k, r) + max_naive(height, k, end, r));
+	// get = Math.max(get, max_naive(height, start, k, r) + max_naive(height, k,
+	// end, r));
 	// }
 	// r.put(start + end, get);
 	// return get;

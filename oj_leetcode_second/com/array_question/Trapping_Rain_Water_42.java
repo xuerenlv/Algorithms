@@ -1,4 +1,4 @@
-package com.leetcode.graph;
+package com.array_question;
 
 public class Trapping_Rain_Water_42 {
 
@@ -10,6 +10,27 @@ public class Trapping_Rain_Water_42 {
 }
 
 class Solution_Trapping_Rain_Water_42 {
+
+	// 这个想法很有趣
+	public int trap_2(int[] height) {
+		int secHight = 0;
+		int left = 0;
+		int right = height.length - 1;
+		int area = 0;
+		while (left < right) {
+			if (height[left] < height[right]) {
+				secHight = Math.max(height[left], secHight);
+				area += secHight - height[left];// 计算当前格的能装雨水的容量
+				left++;
+			} else {
+				secHight = Math.max(height[right], secHight);
+				area += secHight - height[right];
+				right--;
+			}
+		}
+		return area;
+	}
+
 	public int trap(int[] height) {
 		int len = height.length;
 		if (len < 3)
@@ -31,7 +52,7 @@ class Solution_Trapping_Rain_Water_42 {
 				if (height[i] >= min) {
 					height[i] -= min;
 				} else {
-					temp += min-height[i];
+					temp += min - height[i];
 					height[i] = 0;
 				}
 			}
