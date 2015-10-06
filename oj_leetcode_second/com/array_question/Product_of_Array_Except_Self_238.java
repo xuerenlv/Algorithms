@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 public class Product_of_Array_Except_Self_238 {
 
@@ -9,13 +9,17 @@ public class Product_of_Array_Except_Self_238 {
 }
 
 class Solution_Product_of_Array_Except_Self_238 {
+	// 挺有技巧得解法
 	public int[] productExceptSelf(int[] nums) {
 		int[] res = new int[nums.length];
+
+		// res 里面先存储的是，从右向左乘积
 		res[res.length - 1] = 1;
 		for (int i = nums.length - 2; i >= 0; i--) {
 			res[i] = res[i + 1] * nums[i + 1];
 		}
 
+		// 从左向右乘积，即可得结果
 		int left = 1;
 		for (int i = 0; i < nums.length; i++) {
 			res[i] *= left;
@@ -25,6 +29,7 @@ class Solution_Product_of_Array_Except_Self_238 {
 
 	}
 
+	// 比较naive的解法
 	public int[] productExceptSelf_Time_Limit_Exceeded(int[] nums) {
 		int[] re = new int[nums.length];
 
