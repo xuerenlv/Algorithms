@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.back_tracking_question;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +21,11 @@ class Solution_Combination_Sum_III_216 {
 		List<Integer> in = new ArrayList<>();
 		List<List<Integer>> re = new ArrayList<>();
 
-		find(9, 1, k, in, re, n);
+		find(1, 9, k, in, re, n);
 		return re;
 	}
 
-	void find(int n, int start, int k, List<Integer> in, List<List<Integer>> re, int target) {
+	void find(int start, int n, int k, List<Integer> in, List<List<Integer>> re, int target) {
 		if (target <= 0) {
 			if (k == 0 && target == 0)
 				re.add(new ArrayList<>(in));
@@ -33,8 +33,8 @@ class Solution_Combination_Sum_III_216 {
 		}
 		for (int i = start; i <= n; i++) {
 			in.add(i);
-			find(n, i + 1, k - 1, in, re, target - i);
-			in.remove((Integer) i);
+			find(i + 1, n, k - 1, in, re, target - i);
+			in.remove(in.size() - 1);
 		}
 	}
 }
