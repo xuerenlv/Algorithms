@@ -23,7 +23,7 @@ class Solution_Best_Time_to_Buy_and_Sell_Stock_III_123 {
 					continue;
 				}
 			}
-			//将做两次交易，分解成做两个一次交易
+			// 将做两次交易，分解成做两个一次交易
 			re = Math.max(re, maxProfit_start_end(prices, 0, i) + maxProfit_start_end(prices, i + 1, len - 1));
 		}
 
@@ -34,9 +34,9 @@ class Solution_Best_Time_to_Buy_and_Sell_Stock_III_123 {
 		if (end == start)
 			return 0;
 
-		int max_price = 0;
+		int max_price = prices[end];
 		int re = 0;
-		for (int i = end; i >= start; i--) {
+		for (int i = end - 1; i >= start; i--) {
 			max_price = Math.max(max_price, prices[i]);
 			re = Math.max(re, max_price - prices[i]);
 		}
