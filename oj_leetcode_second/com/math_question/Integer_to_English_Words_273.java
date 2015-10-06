@@ -1,9 +1,10 @@
-package com.leetcode;
+package com.math_question;
 
 public class Integer_to_English_Words_273 {
 
 	public static void main(String[] args) {
 
+		System.out.println(new Solution_Integer_to_English_Words_273().numberToWords(230234254));
 	}
 
 }
@@ -33,6 +34,7 @@ class Solution_Integer_to_English_Words_273 {
 		num = num - tempThousand * thousand;
 		if (num != 0)
 			result += getStr(num);
+
 		if (result.charAt(result.length() - 1) == ' ')
 			return result.substring(0, result.length() - 1);
 		else
@@ -51,20 +53,20 @@ class Solution_Integer_to_English_Words_273 {
 		num = num - 100 * hundred;
 		int ten = num / 10;
 		if (ten != 0) {
-			if (ten == 1) {
+			if (ten == 1) {// 十几
 				str += getTen(num);
 				return str;
-			} else
+			} else {// 几十
 				str += getMoreTen(ten);
+			}
 		}
 		num = num - 10 * ten;
-		int digit = num % 10;
-		if (digit != 0)
-			str += getDigit(digit);
-
+		if (num != 0)
+			str += getDigit(num);
 		return str;
 	}
 
+	// 1-9
 	private String getDigit(int digit) {
 		if (digit <= 0)
 			return "";
@@ -92,6 +94,7 @@ class Solution_Integer_to_English_Words_273 {
 		}
 	}
 
+	// 10,20,30,,,90
 	private String getMoreTen(int ten) {
 		if (ten <= 0)
 			return "";
@@ -119,6 +122,7 @@ class Solution_Integer_to_English_Words_273 {
 		}
 	}
 
+	// 10-19 转换成字符串
 	private String getTen(int ten) {
 		if (ten <= 0)
 			return "";
