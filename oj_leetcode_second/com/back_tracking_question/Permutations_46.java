@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.back_tracking_question;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 public class Permutations_46 {
 
 	public static void main(String[] args) {
-		int[] nums = { 1, 2, 3,4,5 };
+		int[] nums = { 1, 2, 3, 4, 5 };
 
 		List<List<Integer>> re_list = new Solution_Permutations_46().permute(nums);
 		for (List<Integer> in_list : re_list) {
@@ -27,7 +27,7 @@ class Solution_Permutations_46 {
 		if (start == end) {
 			List<Integer> in_list = new ArrayList<Integer>();
 			for (int i = 0; i < arr.length; i++) {
-				in_list.add(i, arr[i]);
+				in_list.add(arr[i]);
 			}
 			re.add(in_list);
 		} else {
