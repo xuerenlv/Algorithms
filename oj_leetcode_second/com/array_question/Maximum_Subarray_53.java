@@ -13,13 +13,13 @@ public class Maximum_Subarray_53 {
 }
 
 class Solution_Maximum_Subarray_53 {
-	public int maxSubArray(int[] A) {
-		int max = A[0];
-		int sum = A[0];
+	public int maxSubArray(int[] nums) {
+		int max = nums[0];
+		int sum = nums[0];
 
 		// 前面取得所有数之中加上我自身，如果比我自身大，那就要，否则不如不要，因为它让我变小
-		for (int i = 1; i < A.length; i++) {
-			sum = Math.max(sum + A[i], A[i]);
+		for (int i = 1; i < nums.length; i++) {
+			sum = Math.max(sum + nums[i], nums[i]);
 			max = Math.max(max, sum);
 		}
 		return max;
