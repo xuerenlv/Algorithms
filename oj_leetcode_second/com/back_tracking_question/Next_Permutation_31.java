@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.back_tracking_question;
 
 import java.util.Arrays;
 
@@ -43,6 +43,7 @@ class Solution_Next_Permutation_31 {
 		reverse(num, pos + 1, num.length - 1);
 	}
 
+	// 反转数组
 	public void reverse(int[] num, int begin, int end) {
 		int l = begin, r = end;
 		while (l < r) {

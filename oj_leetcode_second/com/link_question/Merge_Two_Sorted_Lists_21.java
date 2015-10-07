@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.link_question;
 
 public class Merge_Two_Sorted_Lists_21 {
 
@@ -34,19 +34,11 @@ class Solution_Merge_Two_Sorted_Lists_21 {
 			}
 		}
 
-		while (p != null) {
-			s = p;
-			p = p.next;
-			s.next = null;
-			head_tail.next = s;
-			head_tail = s;
+		if (p != null) {
+			head_tail.next = p;
 		}
-		while (q != null) {
-			s = q;
-			q = q.next;
-			s.next = null;
-			head_tail.next = s;
-			head_tail = s;
+		if (q != null) {
+			head_tail.next = q;
 		}
 
 		return head.next;

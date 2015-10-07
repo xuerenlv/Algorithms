@@ -6,7 +6,7 @@ import java.util.List;
 public class Permutations_II_47 {
 
 	public static void main(String[] args) {
-		int[] nums = { 3, 3, 3, 5 };
+		int[] nums = { 3, 3, 6, 3, 5, 6 };
 
 		List<List<Integer>> re = new Solution_Permutations_II_47().permuteUnique(nums);
 		for (int i = 0; i < re.size(); i++) {
@@ -51,9 +51,9 @@ class Solution_Permutations_II_47 {
 		}
 	}
 
+	// 对于arr，从start到i-1都与 arr［i］不同才返回true
 	boolean ok_str(int[] arr, int start, int i) {
-		int k;
-		for (k = start; k < i; k++) {
+		for (int k = start; k < i; k++) {
 			if (arr[k] == arr[i])
 				return false;
 		}
