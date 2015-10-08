@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 public class Remove_Duplicates_from_Sorted_Array_26 {
 
@@ -21,8 +21,7 @@ class Solution_Remove_Duplicates_from_Sorted_Array_26 {
 			if (nums[i] == nums[i - 1]) {
 				continue;
 			} else {
-				nums[count] = nums[i];
-				count++;
+				nums[count++] = nums[i];
 			}
 		}
 		return count;

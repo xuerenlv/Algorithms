@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 
 public class Remove_Duplicates_from_Sorted_Array_II_80 {
@@ -32,7 +32,6 @@ class Solution_Remove_Duplicates_from_Sorted_Array_II_80 {
 			}
 		}
 		
-//		System.out.println(Arrays.toString(nums));
 		return count;
 	}
 }
