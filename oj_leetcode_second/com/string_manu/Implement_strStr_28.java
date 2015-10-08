@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 public class Implement_strStr_28 {
 
@@ -16,9 +16,6 @@ class Solution_Implement_strStr_28 {
             return -1;
         if(haystack.length()!=0 && needle.length()==0)
             return 0;
-        
-        
-        
 		int[] next=genNext(needle);
 		return findString(haystack, needle, next);
 	}
@@ -77,13 +74,13 @@ class Solution_Implement_strStr_28 {
 			if (ma_c[i] == f_c[j]) {
 				i++;
 				j++;
-				System.out.println(i + " " + j);
+//				System.out.println(i + " " + j);
 			} else {
 				i = i - j + 1; // i-j 为回到原来的位置，加 1 位向下进一位
 				j = 0;
 			}
 		}
 
-		return (j == f_len) ? (i - j + 1) : -1;
+		return (j == f_len) ? (i - j) : -1;
 	}
 }

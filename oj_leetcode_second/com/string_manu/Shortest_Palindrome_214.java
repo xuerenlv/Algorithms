@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 public class Shortest_Palindrome_214 {
 
