@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 public class Remove_Element_27 {
 

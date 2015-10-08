@@ -1,4 +1,4 @@
-package com.leetcode.link_2;
+package com.link_question;
 
 public class Delete_Node_in_a_Linked_List_237 {
 
@@ -9,7 +9,7 @@ public class Delete_Node_in_a_Linked_List_237 {
 
 class Solution_Delete_Node_in_a_Linked_List_237 {
 	public void deleteNode(ListNode node) {
-		if(node != null && node.next != null){
+		if (node != null && node.next != null) {
 			node.val = node.next.val;
 			node.next = node.next.next;
 		}
