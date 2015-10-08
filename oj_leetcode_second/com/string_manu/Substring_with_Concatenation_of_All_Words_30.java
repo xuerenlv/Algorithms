@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +13,8 @@ public class Substring_with_Concatenation_of_All_Words_30 {
 }
 
 class Solution_Substring_with_Concatenation_of_All_Words_30 {
+
+	// 很优美，优雅，美丽，简洁
 	public List<Integer> findSubstring(String s, String[] words) {
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		if (s == null || s.isEmpty() || words == null || words.length < 1) {
@@ -50,5 +52,5 @@ class Solution_Substring_with_Concatenation_of_All_Words_30 {
 		}
 		return result;
 	}
-	
+
 }
