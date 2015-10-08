@@ -10,7 +10,7 @@ public class Add_Digits_258 {
 
 class Solution_Add_Digits_258 {
 
-	// 结果 1到9 的循环出现
+	// 结果   1到9 的循环出现
 	public int addDigits_other_people(int num) {
 		return 1 + (num - 1) % 9;
 	}
