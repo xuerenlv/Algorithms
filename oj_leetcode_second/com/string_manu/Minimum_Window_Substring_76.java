@@ -1,6 +1,4 @@
-package com.leetcode;
-
-import java.util.Arrays;
+package com.string_manu;
 
 public class Minimum_Window_Substring_76 {
 
@@ -13,6 +11,10 @@ public class Minimum_Window_Substring_76 {
 }
 
 class Solution_Minimum_Window_Substring_76 {
+
+	// 写的也是很优雅，用两个 数组 来纪录一个字符串的特征
+	// 一个纪录有那些字符出现，另一个纪录字符出现了几次
+	// 还有一点就是双指针，也很美
 	public String minWindow(String s, String t) {
 		if (s.length() == 0 || t.length() == 0)
 			return "";
@@ -30,7 +32,7 @@ class Solution_Minimum_Window_Substring_76 {
 		int found = 0; // found stores how many letters in t has been found in s
 		int len = Integer.MAX_VALUE;
 		String res = "";
-		
+
 		while (j < s.length()) {
 			char cj = s.charAt(j);
 			if (found < t.length()) { // we haven't found all the letters in t
