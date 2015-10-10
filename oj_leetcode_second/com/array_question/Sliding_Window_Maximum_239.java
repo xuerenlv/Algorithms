@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 import java.util.LinkedList;
 
