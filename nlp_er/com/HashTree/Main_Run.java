@@ -86,7 +86,7 @@ public class Main_Run {
 		all_key_set.toArray(all_key_arr);
 		sort_str_arr_by_dic(all_key_arr, 0, all_key_arr.length - 1);
 		for (String one_key : all_key_arr) {
-			System.out.println(one_key + "->" + all_frequent_items.get(one_key));
+			System.out.println(one_key.substring(1) + " " + all_frequent_items.get(one_key));
 		}
 	}
 
