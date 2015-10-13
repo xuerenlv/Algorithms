@@ -51,7 +51,6 @@ public class HashTree {
 				add_pri(can_str, can_str_arr, tree_node.branch[branch_num]);
 			return;
 		}
-
 		tree_node.container_map.put(can_str, 0);
 		// 当达到最大深度，或者对于候选item，已经hash到最后一个位置
 		if (tree_node.level == max_depth || tree_node.level - 1 == can_str_arr.length) {
@@ -132,8 +131,7 @@ public class HashTree {
 		return re_map;
 	}
 
-	private void collect_all_leafs_pri(Map<String, Float> re_map, HashTreeNode treeNode, int file_list_size,
-			float minsup) {
+	private void collect_all_leafs_pri(Map<String, Float> re_map, HashTreeNode treeNode, int file_list_size,float minsup) {
 		if (treeNode.isleaf) {
 			for (Map.Entry<String, Integer> entry : treeNode.container_map.entrySet()) {
 				float sup = (float) entry.getValue() / (float) file_list_size;

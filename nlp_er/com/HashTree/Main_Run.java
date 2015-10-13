@@ -1,9 +1,11 @@
 package com.HashTree;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,6 +65,7 @@ public class Main_Run {
 			// 3...4 对于hashtree 进行收集，返回 F(k+1) 与对应的 sup
 			Map<String, Float> F_k_plus_1_map = hashTree.collect_all_leafs(file_list.size(), minsup);
 
+			// 穷举，用于检验是否正确
 			// Map<String, Float> F_k_plus_1_map =
 			// blute_force(file_list,C_k_plus_1_atter_prune,minsup);
 
@@ -72,7 +75,6 @@ public class Main_Run {
 			} else {
 				frequent_items_all.add(k, F_k_plus_1_map);
 			}
-
 			k++;
 		}
 
@@ -85,8 +87,16 @@ public class Main_Run {
 		String[] all_key_arr = new String[all_key_set.size()];
 		all_key_set.toArray(all_key_arr);
 		sort_str_arr_by_dic(all_key_arr, 0, all_key_arr.length - 1);
-		for (String one_key : all_key_arr) {
-			System.out.println(one_key.substring(1) + " " + all_frequent_items.get(one_key));
+
+		// 写入文件
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./nlp_er/result.txt")));
+			for (String one_key : all_key_arr) {
+				writer.write(one_key.substring(1) + " " + all_frequent_items.get(one_key)+"\n");
+			}
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -284,10 +294,8 @@ public class Main_Run {
 			System.out.println("file does not existed !");
 			e.printStackTrace();
 		}
-
-		String line = "";
 		try {
-			reader.readLine(); //  不读第一行
+			String line = reader.readLine(); //  不读第一行
 			while ((line = reader.readLine()) != null) {
 				String line_str = "";
 				String[] split = line.split(" ");
