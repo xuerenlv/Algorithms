@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.search;
 
 public class Search_in_Rotated_Sorted_Array_II_81 {
 
