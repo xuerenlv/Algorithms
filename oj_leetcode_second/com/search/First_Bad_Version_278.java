@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.search;
 
 public class First_Bad_Version_278 {
 

@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.search;
 
 import java.util.Arrays;
 
@@ -15,11 +15,13 @@ public class Search_for_a_Range_34 {
 }
 
 class Solution_Search_for_a_Range_34 {
+	// 因为是在有序数组中查找，所以很正常想到使用二分查找
 	public int[] searchRange(int[] nums, int target) {
 		int[] re = { -1, -1 };
 		int left = 0, right = nums.length - 1, mid;
 		while (left <= right) {
 			mid = (left + right) >> 1;
+			// 就是在找到元素时再进行一次处理
 			if (nums[mid] == target) {
 				right = mid;
 				left = mid;
