@@ -1,6 +1,6 @@
-package com.book.sword_offer;
+package com.math_question;
 
-public class pow_p91 {
+public class Pow_x_n_50 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -9,16 +9,9 @@ public class pow_p91 {
 
 }
 
-class Pow {
-	boolean invalid_input = false;
-
-	public Pow() {
-	}
-
-	double pow(double base, int exp) {
-		invalid_input = false;
+class Solution_Pow_x_n_50 {
+	public double myPow(double base, int exp) {
 		if (equal(base, 0.0) && exp < 0) {
-			invalid_input = true;
 			return 0.0;
 		}
 		if (equal(base, 1.0)) {
