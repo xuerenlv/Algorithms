@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 public class Jump_Game_II_45 {
 
@@ -22,13 +22,18 @@ class Solution_Jump_Game_II_45 {
 			if (curRch < i) {
 				jump++;
 				curRch = curMax;
+				if (curRch >= nums.length - 1) // 当前节点可以到达最后一个节点
+					return jump;
 			}
 			curMax = Math.max(curMax, nums[i] + i);
+			if (curMax == i) // 最多只能到达当前节点
+				return 0;
 		}
 		return jump;
 	}
 
 	// Time Limit Exceeded
+	// 还是从后向前进行遍历的思想，不过这里纪录的是最小步数，而不是可达性
 	public int jump_overtime(int[] nums) {
 		if (nums.length <= 1)
 			return 0;
