@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +12,21 @@ public class Valid_Anagram_242 {
 }
 
 class Solution_Valid_Anagram_242 {
+
+	// 挺聪明的做法，因为只有26个字母，所以开一个数组就可以了
+	public boolean isAnagram_2(String s, String t) {
+		int[] alphabet = new int[26];
+		for (int i = 0; i < s.length(); i++)
+			alphabet[s.charAt(i) - 'a']++;
+		for (int i = 0; i < t.length(); i++)
+			alphabet[t.charAt(i) - 'a']--;
+		for (int i : alphabet)
+			if (i != 0)
+				return false;
+		return true;
+	}
+
+	// 用两个map纪录字符串的特征
 	public boolean isAnagram(String s, String t) {
 		if (s.length() != t.length())
 			return false;

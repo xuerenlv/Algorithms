@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +17,8 @@ public class Group_Anagrams_49 {
 }
 
 class Solution_Group_Anagrams_49 {
+
+	// 很清晰的做法， “Anagram”中抽出的特征是相同的
 	public List<List<String>> groupAnagrams(String[] strs) {
 		List<List<String>> re = new ArrayList<>();
 		Arrays.sort(strs, new Comparator<String>() {
