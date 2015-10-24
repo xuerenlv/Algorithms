@@ -135,7 +135,7 @@ public class HashTree {
 		if (treeNode.isleaf) {
 			for (Map.Entry<String, Integer> entry : treeNode.container_map.entrySet()) {
 				float sup = (float) entry.getValue() / (float) file_list_size;
-				if (sup - minsup > 0) {
+				if (sup - minsup > 0.0000001) {
 					re_map.put(entry.getKey(), sup);
 				}
 			}
