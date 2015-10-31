@@ -1,4 +1,4 @@
-package com.leetcode.graph;
+package com.back_tracking_question;
 
 public class N_Queens_II_52 {
 
@@ -13,11 +13,12 @@ class Solution_N_Queens_II_52 {
 		int[] count = new int[1];
 		int[] arr = new int[n];
 		n_queens(arr, n, 0, count);
+		// 用一个数组来传递个数
 		return count[0];
 	}
 
 	void n_queens(int[] arr, int n, int index, int[] count) {
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < n; i++) { // 遍历第index行的每一列
 			if (isValid(arr, index, i)) {
 				arr[index] = i;
 				if (index == n - 1) {
