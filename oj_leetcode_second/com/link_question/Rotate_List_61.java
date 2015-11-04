@@ -23,6 +23,7 @@ public class Rotate_List_61 {
 }
 
 class Solution_Rotate_List_61 {
+	// 基于逆转的也可以
 
 	// 使用 双指针
 	public ListNode rotateRight_2(ListNode head, int k) {
