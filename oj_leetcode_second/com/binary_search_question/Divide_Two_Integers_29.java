@@ -3,7 +3,7 @@ package com.binary_search_question;
 public class Divide_Two_Integers_29 {
 
 	public static void main(String[] args) {
-System.out.println(new Solution_Divide_Two_Integers_29().divideLong(23, 9));
+		System.out.println(new Solution_Divide_Two_Integers_29().divideLong(23, 9));
 	}
 
 }
@@ -16,7 +16,7 @@ class Solution_Divide_Two_Integers_29 {
 	}
 
 	public long divideLong(long dividend, long divisor) {
-		boolean negative = dividend < 0 != divisor < 0;
+		boolean negative = dividend < 0 != divisor < 0; // 不同号，则为负
 		if (dividend < 0)
 			dividend = -dividend;
 		if (divisor < 0)
@@ -25,6 +25,7 @@ class Solution_Divide_Two_Integers_29 {
 		if (dividend < divisor)
 			return 0;
 
+		// 这里有一种算幂次的思想，应该是同样的思想
 		long sum = divisor;
 		long divide = 1;
 		while ((sum + sum) <= dividend) {
