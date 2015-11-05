@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.link_question;
 
 public class Sort_List_148 {
 
@@ -9,6 +9,7 @@ public class Sort_List_148 {
 }
 
 class Solution_Sort_List_148 {
+	// 基于归并排序的链表排序
 	public ListNode sortList(ListNode head) {
 		if (head == null || head.next == null)
 			return head;
@@ -18,6 +19,7 @@ class Solution_Sort_List_148 {
 		return merge(sortList(head), sortList(next));
 	}
 
+	// 使用快慢指针来获取链表的中间节点
 	ListNode get_mid(ListNode head) {
 		ListNode slow = head;
 		ListNode fast = head;
@@ -29,6 +31,7 @@ class Solution_Sort_List_148 {
 		return slow;
 	}
 
+	// 两个链表的合并
 	ListNode merge(ListNode one, ListNode two) {
 		ListNode new_head = new ListNode(-1);
 

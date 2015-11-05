@@ -13,6 +13,7 @@ public class Merge_k_Sorted_Lists_23 {
 		return partion(lists, 0, lists.length - 1);
 	}
 
+	// 这是一种基于归并的思想，来自k sorted list 合并的算法
 	public static ListNode partion(ListNode[] lists, int s, int e) {
 		if (s == e)
 			return lists[s];

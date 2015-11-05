@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 import java.util.Arrays;
 
@@ -38,8 +38,6 @@ class Solution_Merge_Sorted_Array_88 {
 		while (j >= 0) {
 			nums1[index--] = nums2[j--];
 		}
-
-		// System.out.println(Arrays.toString(nums1));
 	}
 
 	public void merge_wrong(int[] nums1, int m, int[] nums2, int n) {
