@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.back_tracking_question;
 
 public class Word_Search_79 {
 
@@ -15,7 +15,7 @@ class Solution_Word_Search_79 {
 		int row = board.length;
 		int col = board[0].length;
 
-		if (word.length() == 0)
+		if (word.length() == 0) // 词的长度为0
 			return true;
 		if (row == 0)
 			return false;
@@ -35,10 +35,12 @@ class Solution_Word_Search_79 {
 		return false;
 	}
 
+	// 从 board［i］［j］ 出发开始搜索 word
 	boolean sou_suo_true(char[][] board, int i, int j, String word, boolean[][] visited) {
 		if (word.length() == 0) {
 			return true;
 		}
+		// 用这种方法定义4个方向，挺不错
 		int[][] direction = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
 		for (int k = 0; k < direction.length; k++) {
 			int ii = i + direction[k][0];
@@ -56,6 +58,7 @@ class Solution_Word_Search_79 {
 
 	}
 
+	// 888888888888888888888888888888888888888888888888888888888888888888888888888
 	// 没有出错，就是使用之后没有复原
 	public boolean exist_huisuo(char[][] board, String word) {
 		int row = board.length;
