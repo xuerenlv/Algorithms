@@ -1,4 +1,4 @@
-package com.leetcode.link_2;
+package com.binary_tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,9 +10,9 @@ public class Binary_Tree_Postorder_Traversal_145 {
 	public static void main(String[] args) {
 		TreeNode root = new TreeNode(1);
 		root.right = new TreeNode(2);
-		
+
 		List<Integer> pos = new Solution_Binary_Tree_Postorder_Traversal_145().postorderTraversal(root);
-		
+
 		System.out.println(Arrays.toString(pos.toArray()));
 	}
 
@@ -21,19 +21,19 @@ public class Binary_Tree_Postorder_Traversal_145 {
 class Solution_Binary_Tree_Postorder_Traversal_145 {
 	public List<Integer> postorderTraversal(TreeNode root) {
 		List<Integer> re = new ArrayList<Integer>();
-//		digui(root, re);
+		// digui(root, re);
 		fei_digui(root, re);
 		return re;
 	}
 
-	// 后序非递归
+	// 后序非递归，也是使用栈，3种二叉树的非递归算法都是使用栈
 	void fei_digui(TreeNode root, List<Integer> re) {
 		Stack<TreeNode> stack = new Stack<TreeNode>();
 		TreeNode cur = null;
 		TreeNode pre = null;
-		if(root==null){
+		if (root == null) {
 			return;
-		}else{
+		} else {
 			stack.push(root);
 		}
 		while (!stack.empty()) {
@@ -45,7 +45,7 @@ class Solution_Binary_Tree_Postorder_Traversal_145 {
 			} else {
 				if (cur.right != null)
 					stack.add(cur.right);
-				if (cur.left != null){
+				if (cur.left != null) {
 					stack.push(cur.left);
 				}
 			}

@@ -1,4 +1,4 @@
-package com.leetcode.link_2;
+package com.binary_tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,18 +24,19 @@ class Solution_Binary_Tree_Inorder_Traversal_94 {
 
 	// 中序遍历非递归
 	void bin_inorder_with_iterative(TreeNode root, List<Integer> re) {
+		// 中序遍历非递归，使用 栈
 		Stack<TreeNode> stack = new Stack<TreeNode>();
 
 		TreeNode p = root;
 		while (p != null || !stack.isEmpty()) {
-			while (p != null) {
+			while (p != null) { // 左分支全部进栈
 				stack.push(p);
 				p = p.left;
 			}
 			if (!stack.isEmpty()) {
 				p = stack.pop();
 				re.add(p.val);
-				p = p.right;
+				p = p.right;// 处理过根节点之后，处理右分支
 			}
 		}
 	}

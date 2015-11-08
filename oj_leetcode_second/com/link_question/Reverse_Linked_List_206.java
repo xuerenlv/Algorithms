@@ -1,5 +1,4 @@
-package com.leetcode.link;
-
+package com.link_question;
 
 public class Reverse_Linked_List_206 {
 
