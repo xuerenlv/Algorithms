@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.link_question;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
