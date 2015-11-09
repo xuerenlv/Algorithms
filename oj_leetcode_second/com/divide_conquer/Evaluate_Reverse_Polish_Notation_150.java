@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.divide_conquer;
 
 import java.util.Stack;
 

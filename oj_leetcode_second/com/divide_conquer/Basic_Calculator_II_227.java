@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.divide_conquer;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -14,6 +14,7 @@ public class Basic_Calculator_II_227 {
 
 class Solution_Basic_Calculator_II_227 {
 
+	// 先处理乘除，再处理加减	
 	public int calculate(String s) {
 		if (s == null || s.length() == 0)
 			return 0;
