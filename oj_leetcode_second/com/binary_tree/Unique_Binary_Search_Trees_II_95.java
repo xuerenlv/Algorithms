@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.binary_tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +26,10 @@ class Solution_Unique_Binary_Search_Trees_II_95 {
 		return generateTrees(1, n);
 	}
 
+	// 感觉使用的是回溯法
 	public List<TreeNode> generateTrees(int start, int end) {
 		List<TreeNode> trees = new ArrayList<TreeNode>();
-		if (start > end) {
+		if (start > end) {// start可以等于end，表明当前只处理一个 节点
 			trees.add(null);
 			return trees;
 		}
