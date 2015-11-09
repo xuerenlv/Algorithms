@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.divide_conquer;
 
 import java.util.Stack;
 
@@ -17,8 +17,8 @@ class Solution_Basic_Calculator_224 {
 	public int calculate(String s) {
 		if (s == null || s.length() == 0)
 			return 0;
-		if(s.length()==1)
-			return s.charAt(0)-'0';
+		if (s.length() == 1)
+			return s.charAt(0) - '0';
 
 		Stack<Integer> stack = new Stack<>();
 		int current = 0;

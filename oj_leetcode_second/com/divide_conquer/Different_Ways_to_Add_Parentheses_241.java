@@ -34,7 +34,7 @@ class Solution_Different_Ways_to_Add_Parentheses_241 {
 			}
 		}
 
-		if (re.isEmpty())
+		if (re.isEmpty()) // 经过上面的循环，这里剩下的 串 里面不包含 运算符
 			re.add(Integer.parseInt(input));
 		return re;
 	}
