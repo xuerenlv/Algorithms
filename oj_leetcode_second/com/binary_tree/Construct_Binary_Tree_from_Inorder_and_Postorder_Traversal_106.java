@@ -1,4 +1,6 @@
-package com.leetcode.link;
+package com.binary_tree;
+
+import java.util.Stack;
 
 public class Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal_106 {
 
@@ -12,6 +14,40 @@ public class Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal_106 {
 }
 
 class Solution_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal_106 {
+	// 非递归构造
+	public TreeNode buildTree_iteration(int[] inorder, int[] postorder) {
+		if (inorder.length == 0 || postorder.length == 0)
+			return null;
+		int ip = inorder.length - 1;
+		int pp = postorder.length - 1;
+
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+		TreeNode prev = null;
+		TreeNode root = new TreeNode(postorder[pp]);
+		stack.push(root);
+		pp--;
+
+		while (pp >= 0) {
+			while (!stack.isEmpty() && stack.peek().val == inorder[ip]) {
+				prev = stack.pop();
+				ip--;
+			}
+			TreeNode newNode = new TreeNode(postorder[pp]);
+			if (prev != null) {
+				prev.left = newNode;
+			} else if (!stack.isEmpty()) {
+				TreeNode currTop = stack.peek();
+				currTop.right = newNode;
+			}
+			stack.push(newNode);
+			prev = null;
+			pp--;
+		}
+
+		return root;
+	}
+
+	// ***************************************************************************************************
 	public TreeNode buildTree(int[] inorder, int[] postorder) {
 		return buildTree(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
 	}
