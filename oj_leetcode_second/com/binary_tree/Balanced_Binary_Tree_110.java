@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.binary_tree;
 
 public class Balanced_Binary_Tree_110 {
 
@@ -9,6 +9,8 @@ public class Balanced_Binary_Tree_110 {
 }
 
 class Solution_Balanced_Binary_Tree_110 {
+
+	// 基于递归的，判断二叉树是不是平衡二叉树
 	public boolean isBalanced(TreeNode root) {
 		if (root == null)
 			return true;

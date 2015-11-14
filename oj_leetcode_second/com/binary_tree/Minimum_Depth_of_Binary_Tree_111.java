@@ -29,10 +29,12 @@ class Solution_Minimum_Depth_of_Binary_Tree_111 {
 			return 0;
 		int left = minDepth(root.left);
 		int right = minDepth(root.right);
+		// 若left或right为0，则只有一个了； 当两个都存在的时候才取min
+		// 不可以去掉
 		return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;
 	}
 
-	// 活用二叉树的层序遍历
+	// 活用二叉树的层序遍历，既可以求最大深度，也可以求最小深度
 	public int minDepth(TreeNode root) {
 		if (root == null)
 			return 0;
