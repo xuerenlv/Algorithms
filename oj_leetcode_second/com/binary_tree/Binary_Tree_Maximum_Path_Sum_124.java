@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.binary_tree;
 
 public class Binary_Tree_Maximum_Path_Sum_124 {
 

@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.dynamic_programing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +24,13 @@ public class Triangle_120 {
 		triangle.add(line3);
 
 		System.out.println(new Solution_Triangle_120().minimumTotal(triangle));
+		System.out.println(new Solution_Triangle_120().minimumTotal_overtime_2(triangle));
 	}
 
 }
 
 class Solution_Triangle_120 {
+	// 从下向上进行计算
 	public int minimumTotal(List<List<Integer>> triangle) {
 		int[] A = new int[triangle.size() + 1];
 		for (int i = triangle.size() - 1; i >= 0; i--) {
@@ -39,6 +41,7 @@ class Solution_Triangle_120 {
 		return A[0];
 	}
 
+	// 使用回溯法也是可以的，只是会超时
 	public int minimumTotal_overtime_2(List<List<Integer>> triangle) {
 		int row = triangle.size();
 		if (row == 0)

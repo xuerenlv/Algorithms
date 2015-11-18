@@ -1,4 +1,4 @@
-package com.leetcode.link_2;
+package com.binary_tree;
 
 public class Sum_Root_to_Leaf_Numbers_129 {
 
@@ -11,8 +11,7 @@ public class Sum_Root_to_Leaf_Numbers_129 {
 class Solution_Sum_Root_to_Leaf_Numbers_129 {
 	// accepted
 	public int sumNumbers(TreeNode root) {
-		int root_sum = 0;
-		return gen_sum(root, root_sum);
+		return gen_sum(root, 0);
 	}
 
 	int gen_sum(TreeNode root, int root_sum) {
@@ -28,6 +27,5 @@ class Solution_Sum_Root_to_Leaf_Numbers_129 {
 		} else {
 			return gen_sum(root.right, root_sum * 10 + root.val);
 		}
-
 	}
 }
