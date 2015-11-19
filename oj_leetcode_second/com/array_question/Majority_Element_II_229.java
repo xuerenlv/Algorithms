@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,7 @@ public class Majority_Element_II_229 {
 }
 
 class Solution_Majority_Element_II_229 {
+	// 多加一个纪录就可以了
 	public List<Integer> majorityElement(int[] nums) {
 		List<Integer> re = new ArrayList<>();
 		if (nums == null || nums.length == 0)

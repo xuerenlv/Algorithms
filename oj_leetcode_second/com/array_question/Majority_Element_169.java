@@ -1,4 +1,6 @@
-package com.leetcode;
+package com.array_question;
+
+import java.util.Arrays;
 
 public class Majority_Element_169 {
 
@@ -9,6 +11,12 @@ public class Majority_Element_169 {
 }
 
 class Solution_Majority_Element_169 {
+
+	public int majorityElement_2(int[] num) {
+		Arrays.sort(num);
+		return num[num.length / 2];
+	}
+
 	public int majorityElement(int[] nums) {
 		int val = nums[0];
 		int count = 1;
