@@ -1,9 +1,9 @@
-package com.leetcode;
+package com.dynamic_programing;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
@@ -20,13 +20,17 @@ public class Word_Ladder_127 {
 		wordDict.add("robe");
 		wordDict.add("lost");
 		System.out.println(new Solution_Word_Ladder_127().ladderLength("leet", "code", wordDict));
-
-//		System.out.println(new Solution_Word_Ladder_127().does_one("lode", "code"));
+		System.out.println(new Solution_Word_Ladder_127().ladderLength_overtime("leet", "code", wordDict));
+		// System.out.println(new Solution_Word_Ladder_127().does_one("lode",
+		// "code"));
 	}
 
 }
 
 class Solution_Word_Ladder_127 {
+
+
+	// ******************************************************************************************
 	class Pair {
 		String word;
 		int index;
@@ -37,6 +41,7 @@ class Solution_Word_Ladder_127 {
 		}
 	}
 
+	// 就是一种深度优先遍历
 	public int ladderLength(String beginWord, String endWord, Set<String> wordDict) {
 		if (wordDict.size() == 0)
 			return 0;
@@ -50,7 +55,7 @@ class Solution_Word_Ladder_127 {
 			Pair pair = queue.poll();
 			List<String> remove_str = new ArrayList<>();
 			for (String word : wordDict) {
-				if(word.equals(beginWord) || word.equals(endWord)){
+				if (word.equals(beginWord) || word.equals(endWord)) {
 					remove_str.add(word);
 					continue;
 				}
