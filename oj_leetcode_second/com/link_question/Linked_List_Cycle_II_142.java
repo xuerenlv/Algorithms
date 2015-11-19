@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.link_question;
 
 public class Linked_List_Cycle_II_142 {
 
@@ -9,6 +9,8 @@ public class Linked_List_Cycle_II_142 {
 }
 
 class Solution_Linked_List_Cycle_II_142 {
+
+	// 这个还需要思考，为什么可以这样做
 	public ListNode detectCycle(ListNode head) {
 		if (head == null)
 			return null;
@@ -24,7 +26,7 @@ class Solution_Linked_List_Cycle_II_142 {
 			}
 
 		} while (p_fast != p_slow);
-		
+
 		p_slow = head;
 		while (p_slow != p_fast) {
 			p_slow = p_slow.next;

@@ -1,5 +1,4 @@
-package com.leetcode.link;
-
+package com.link_question;
 
 public class Linked_List_Cycle_141 {
 
@@ -10,6 +9,7 @@ public class Linked_List_Cycle_141 {
 }
 
 class Solution_Linked_List_Cycle_141 {
+	// 快慢指针，又名乌龟跑
 	public boolean hasCycle(ListNode head) {
 		if (head == null)
 			return false;
@@ -20,9 +20,6 @@ class Solution_Linked_List_Cycle_141 {
 			p_fast = p_fast.next.next;
 			p_slow = p_slow.next;
 		}
-
-		if (p_fast == null)
-			return false;
 
 		return p_fast == p_slow;
 	}
