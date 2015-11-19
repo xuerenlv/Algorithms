@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 public class Reverse_Words_in_a_String_151 {
 
@@ -11,6 +11,22 @@ public class Reverse_Words_in_a_String_151 {
 }
 
 class Solution_Reverse_Words_in_a_String_151 {
+
+	public String reverseWords_bralliant(String s) {
+		String[] words = s.split(" ");
+		StringBuilder sb = new StringBuilder();
+		int end = words.length - 1;
+		for (int i = 0; i <= end; i++) {
+			if (!words[i].isEmpty()) {
+				sb.insert(0, words[i]);
+				if (i < end)
+					sb.insert(0, " ");
+			}
+		}
+		return sb.toString();
+	}
+	// **********************************************************************************
+
 	// 这个比较好，在O(n)的情况下逆转
 	public String reverseWords_accepted_1(String s) {
 		String rs = "";
@@ -32,6 +48,7 @@ class Solution_Reverse_Words_in_a_String_151 {
 		return rs;
 	}
 
+	// 这种思想较为常用
 	public String reverseWords_accepted_2(String s) {
 		char[] str = s.trim().toCharArray();
 		char[] str_repair = new char[str.length];

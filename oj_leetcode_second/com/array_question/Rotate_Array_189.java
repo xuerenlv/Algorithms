@@ -3,7 +3,6 @@ package com.array_question;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class Rotate_Array_189 {
 

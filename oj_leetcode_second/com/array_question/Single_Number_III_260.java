@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 public class Single_Number_III_260 {
 
@@ -16,7 +16,7 @@ class Solution_Single_Number_III_260 {
 		int xor = 0;
 		for (int i = 0; i < nums.length; i++)
 			xor ^= nums[i];
-		int mask = xor & (-xor);
+		int mask = xor & (-xor);// 取这个数中bit位的第一个1
 
 		int a = 0;
 		int b = 0;

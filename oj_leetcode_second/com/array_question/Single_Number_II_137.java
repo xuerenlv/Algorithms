@@ -1,13 +1,12 @@
-package com.leetcode;
-
+package com.array_question;
 
 public class Single_Number_II_137 {
 
 	public static void main(String[] args) {
-		int[] nums = {2,2,2,3};
-		
+		int[] nums = { 2, 2, 2, 3 };
+
 		System.out.println(new Solution_Single_Number_II_137().singleNumber(nums));
-	
+
 	}
 
 }
@@ -18,8 +17,9 @@ class Solution_Single_Number_II_137 {
 
 		int n = nums.length;
 		for (int i = 0; i < n; ++i) {
+			// 对位进行操作
 			for (int j = 0; j < 32; ++j) {
-				if ((nums[i] & (1 << j))!=0) {
+				if ((nums[i] & (1 << j)) != 0) {
 					number[j]++;
 				}
 			}
