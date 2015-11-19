@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ public class Isomorphic_Strings_205 {
 }
 
 class Solution_Isomorphic_Strings_205 {
-	// 判断两个字符串是不是同构
+	// 判断两个字符串是不是同构，对应位置的字符映射
 	public boolean isIsomorphic_accepted(String s, String t) {
 		if (s.length() != t.length())
 			return false;
