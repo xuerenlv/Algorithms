@@ -1,18 +1,18 @@
-package com.leetcode.graph;
-
+package com.graph;
 
 public class Number_Of_Islands_200 {
 
 	public static void main(String[] args) {
-		char[][] grid = { { '1', '1', '0', '0', '0' },
-				{ '1', '1', '0', '0', '0' }, 
-				{ '0', '0', '1', '0', '0' },
+		char[][] grid = { { '1', '1', '0', '0', '0' }, { '1', '1', '0', '0', '0' }, { '0', '0', '1', '0', '0' },
 				{ '0', '0', '0', '1', '1' } };
 
-		System.out.println(numIslands(grid));
+		System.out.println(new Solution_Number_Of_Islands_200().numIslands(grid));
 	}
 
-	public static int numIslands(char[][] grid) {
+}
+
+class Solution_Number_Of_Islands_200 {
+	public int numIslands(char[][] grid) {
 		int sum = 0;
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[0].length; j++) {
@@ -33,20 +33,19 @@ public class Number_Of_Islands_200 {
 	}
 
 	// 将grid[i][j]的上下左右设置为'2'，表示已被访问过
-	public static void set_visit(char[][] grid, int i, int j) {
+	void set_visit(char[][] grid, int i, int j) {
 		if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length)
 			return;
 
 		// 已经访问过
-		if (grid[i][j] == 'v' || grid[i][j] =='0') {
+		if (grid[i][j] == 'v' || grid[i][j] == '0') {
 			return;
 		}
-		
+
 		grid[i][j] = 'v';
 		set_visit(grid, i, j + 1);
 		set_visit(grid, i, j - 1);
 		set_visit(grid, i + 1, j);
 		set_visit(grid, i - 1, j);
 	}
-
 }

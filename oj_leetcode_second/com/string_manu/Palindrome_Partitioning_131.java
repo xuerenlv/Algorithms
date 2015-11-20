@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,7 @@ public class Palindrome_Partitioning_131 {
 }
 
 class Solution_Palindrome_Partitioning_131 {
+	// 其实就是一个回溯法，我感觉回溯法，很像深度优先遍历
 	public List<List<String>> partition(String s) {
 		List<List<String>> re = new ArrayList<List<String>>();
 		List<String> in = new ArrayList<String>();
@@ -33,7 +34,7 @@ class Solution_Palindrome_Partitioning_131 {
 			if (isPalindrome(test)) {
 				in.add(test);
 				par_str(s, i, end, in, re);
-				in.remove(in.size()-1);
+				in.remove(in.size() - 1);
 			}
 		}
 	}

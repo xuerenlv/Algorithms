@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 public class Palindrome_Partitioning_II_132 {
 
@@ -11,6 +11,58 @@ public class Palindrome_Partitioning_II_132 {
 }
 
 class Solution_Palindrome_Partitioning_II_132 {
+
+	// 还是不听懂
+	public int minCut_2(String s) {
+		if (s == null)
+			return 0;
+		int i, j, n = s.length();
+		int cuts[] = new int[n]; // cuts[i] will store the minimum no. of cuts
+									// required for substring [0...i];
+		boolean dp[][] = new boolean[n][n]; // dp[i][j]=true if substring
+											// [i...j] can be partitioned into
+											// list of palindromes.
+
+		for (i = 0; i < n; i++) {
+			/*
+			 * since every single character is a palindrome, maximum no. of cuts
+			 * for substring [0...i] will be i hence initiating cuts[i] with
+			 * maximum possible value.
+			 */
+			cuts[i] = i;
+			for (j = 0; j <= i; j++) {
+				if (j == i)
+					dp[j][i] = true;
+				else {
+					if (s.charAt(i) != s.charAt(j))
+						continue;
+					if (j == i - 1)
+
+						dp[j][i] = true;
+					else
+						dp[j][i] = dp[j + 1][i - 1];
+				}
+
+				if (dp[j][i]) {
+					if (j == 0)
+						cuts[i] = 0;
+					else
+						cuts[i] = Math.min(cuts[j - 1] + 1, cuts[i]);
+					/*
+					 * since dp[j][i] is a palindrome, cuts[j]+1 equals no. of
+					 * cuts required in [0...i] if we include the current word
+					 * [j..i]; New cuts[i] will be equal to min of previous
+					 * cuts[i] and the newly calculated cuts[i] i.e. cuts[j]+1
+					 */
+				}
+			}
+		}
+		return cuts[n - 1];
+
+	}
+
+	// ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+
 	// 还没有明白
 	public int minCut(String s) {
 		int len = s.length();
@@ -30,6 +82,7 @@ class Solution_Palindrome_Partitioning_II_132 {
 		return D[0] - 1;
 	}
 
+	// ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
 	// easy version
 	// Time Limit Exceeded
 	public int minCut_my(String s) {
