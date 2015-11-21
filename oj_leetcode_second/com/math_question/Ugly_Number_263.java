@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.math_question;
 
 public class Ugly_Number_263 {
 
@@ -9,6 +9,8 @@ public class Ugly_Number_263 {
 }
 
 class Solution_Ugly_Number_263 {
+
+	// 判断一个数是不是丑数
 	public boolean isUgly(int num) {
 		if (num <= 0)
 			return false;

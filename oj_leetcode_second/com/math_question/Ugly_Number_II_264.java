@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.math_question;
 
 public class Ugly_Number_II_264 {
 
@@ -9,6 +9,7 @@ public class Ugly_Number_II_264 {
 }
 
 class Solution_Ugly_Number_II_264 {
+	// 求第n个 丑数
 	public int nthUglyNumber(int n) {
 		int[] re = new int[n];
 		re[0] = 1;
