@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.dynamic_programing;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,16 +8,16 @@ import java.util.Set;
 public class Word_Break_II_140 {
 
 	public static void main(String[] args) {
-		Set<String> wordDict = new  HashSet<String>();
+		Set<String> wordDict = new HashSet<String>();
 		wordDict.add("cat");
 		wordDict.add("cats");
 		wordDict.add("and");
 		wordDict.add("sand");
 		wordDict.add("dog");
-		String s= "catsanddog";
-		
+		String s = "catsanddog";
+
 		List<String> re = new Solution_Word_Break_II_140().wordBreak(s, wordDict);
-		for(String str:re){
+		for (String str : re) {
 			System.out.println(str);
 		}
 	}
@@ -27,7 +27,7 @@ public class Word_Break_II_140 {
 class Solution_Word_Break_II_140 {
 	public List<String> wordBreak(String s, Set<String> wordDict) {
 		List<String> re = new ArrayList<String>();
-		if (!wordBreak_139(s, wordDict)) {
+		if (!wordBreak_139(s, wordDict)) {// 加一下，可以节省很多的时间
 			return re;
 		}
 		String sen = "";
@@ -35,18 +35,16 @@ class Solution_Word_Break_II_140 {
 		return re;
 	}
 
+	// 使用回溯法，求出所有的可能
 	void breakWords(String s, int index, Set<String> wordDict, String sen, List<String> re) {
 		if (index == s.length()) {
-			re.add(sen.substring(0, sen.length()-1));
+			re.add(sen.substring(0, sen.length() - 1));
 			return;
 		}
 		for (int i = index; i < s.length(); i++) {
-			String word = s.substring(index, i+1);
+			String word = s.substring(index, i + 1);
 			if (wordDict.contains(word)) {
-				String tmp = sen;
-				sen += word + " ";
-				breakWords(s, i+1, wordDict, sen, re);
-				sen = tmp;
+				breakWords(s, i + 1, wordDict, sen + word + " ", re);
 			}
 		}
 	}
