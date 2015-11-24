@@ -1,4 +1,4 @@
-package com.leetcode.link_2;
+package com.link_question;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,13 +27,14 @@ class RandomListNode {
 };
 
 class Solution_Copy_List_with_Random_Pointer_138 {
+	// 通过深度优先遍历进行copy
 	public RandomListNode copyRandomList(RandomListNode head) {
 		if (head == null)
 			return null;
 
 		Map<Integer, RandomListNode> map = new HashMap<>();
-
 		Stack<RandomListNode> stack = new Stack<RandomListNode>();
+
 		stack.add(head);
 		while (!stack.isEmpty()) {
 			RandomListNode temp_node = stack.pop();

@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.greedy;
 
 public class Gas_Station_134 {
 
@@ -12,7 +12,8 @@ public class Gas_Station_134 {
 }
 
 class Solution_Gas_Station_134 {
-	 
+
+	// 深入分析题目
 	public int canCompleteCircuit_3(int[] gas, int[] cost) {
 		int len = gas.length;
 		if (len == 0 || len != cost.length)
