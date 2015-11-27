@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.data_structer;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -29,7 +29,7 @@ class Pair {
 }
 
 class LRUCache {
-	Map<Integer, Pair> key_to_point;
+	Map<Integer, Pair> key_to_point; // 存放节点信息
 	Pair head;
 	Pair tail;
 	int size;
@@ -61,7 +61,7 @@ class LRUCache {
 		Pair cur;
 		if (key_to_point.containsKey(key)) {
 			cur = key_to_point.get(key);
-			cur.val = value;
+			cur.val = value; // 更新节点的值
 			cur.pre.next = cur.next;
 			cur.next.pre = cur.pre;
 			put_to_head(cur);
@@ -81,6 +81,7 @@ class LRUCache {
 		}
 	}
 
+	// 加入到开头
 	private void put_to_head(Pair cur) {
 		cur.next = head.next;
 		cur.pre = head;

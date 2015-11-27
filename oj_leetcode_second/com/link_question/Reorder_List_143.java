@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.link_question;
 
 public class Reorder_List_143 {
 
@@ -38,6 +38,7 @@ class Solution_Reorder_List_143 {
 		if (len <= 1)
 			return;
 
+		// 逆转list
 		ListNode re_list = null, s = null;
 		ListNode p = head;
 		while (p != null) {
@@ -51,6 +52,7 @@ class Solution_Reorder_List_143 {
 		ListNode re_tail = re;
 		p = head;
 		while (true) {
+			// 插入原有的节点
 			if (p != head) {
 				re_tail.next = new ListNode(p.val);
 				re_tail = re_tail.next;
@@ -59,6 +61,7 @@ class Solution_Reorder_List_143 {
 			len--;
 			if (len == 0)
 				break;
+			// 插入逆转的节点
 			re_tail.next = new ListNode(re_list.val);
 			re_list = re_list.next;
 			re_tail = re_tail.next;

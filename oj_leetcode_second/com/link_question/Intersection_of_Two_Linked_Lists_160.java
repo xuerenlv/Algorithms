@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.link_question;
 
 public class Intersection_of_Two_Linked_Lists_160 {
 
@@ -26,6 +26,7 @@ class Solution_Intersection_of_Two_Linked_Lists_160 {
 			shorter = headA;
 		}
 
+		// 长的，先把多出的走完
 		int cha = Math.abs(len_a - len_b);
 		while (cha > 0) {
 			longer = longer.next;
@@ -40,6 +41,7 @@ class Solution_Intersection_of_Two_Linked_Lists_160 {
 		return longer;
 	}
 
+	// 获取链表的长度
 	int len(ListNode head) {
 		if (head == null)
 			return 0;

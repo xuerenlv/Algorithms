@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.string_manu;
 
 public class Compare_Version_Numbers_165 {
 	public static void main(String[] args) {
@@ -13,7 +13,7 @@ class Solution_Compare_Version_Numbers_165 {
 		int val1, val2;
 		int index_1 = 0;
 		int index_2 = 0;
-
+		// . 可能有多个
 		while (index_1 < version1.length() || index_2 < version2.length()) {
 			val1 = 0;
 			while (index_1 < version1.length()) {
@@ -21,8 +21,7 @@ class Solution_Compare_Version_Numbers_165 {
 					index_1++;
 					break;
 				}
-				val1 = val1 * 10 + (version1.charAt(index_1) - '0');
-				index_1++;
+				val1 = val1 * 10 + (version1.charAt(index_1++) - '0');
 			}
 
 			val2 = 0;
@@ -31,8 +30,7 @@ class Solution_Compare_Version_Numbers_165 {
 					index_2++;
 					break;
 				}
-				val2 = val2 * 10 + (version2.charAt(index_2) - '0');
-				index_2++;
+				val2 = val2 * 10 + (version2.charAt(index_2++) - '0');
 			}
 			if (val1 > val2)
 				return 1;
