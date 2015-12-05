@@ -1,5 +1,4 @@
-package com.leetcode;
-
+package com.array_question;
 
 public class Largest_Number_179 {
 
@@ -16,10 +15,12 @@ class Solution_Largest_Number_179 {
 	// 排序中的比较
 	public String largestNumber(int[] nums) {
 		int i, j, len = nums.length, swap;
+		// 这里使用的是经过优化的冒泡排序
 		boolean swap_ornot = false;
 		for (i = 0; i < len - 1; i++) {
 			swap_ornot = false;
 			for (j = len - 1; j > i; j--) {
+				// 通过自定义的比较函数，进行排序
 				if (!is_large(nums[j - 1], nums[j])) {
 					swap = nums[j];
 					nums[j] = nums[j - 1];
@@ -44,7 +45,6 @@ class Solution_Largest_Number_179 {
 	boolean is_large(int left, int right) {
 		String l = new Integer(left).toString() + new Integer(right).toString();
 		String r = new Integer(right).toString() + new Integer(left).toString();
-		// System.out.println(l+"  "+r);
 		for (int i = 0; i < l.length(); i++) {
 			if (r.charAt(i) > l.charAt(i)) {
 				return false;

@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.binary_tree;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -12,17 +12,18 @@ public class Binary_Search_Tree_Iterator_173 {
 
 }
 
-class TreeNode {
-	int val;
-	TreeNode left;
-	TreeNode right;
-
-	TreeNode(int x) {
-		val = x;
-	}
-}
+//class TreeNode {
+//	int val;
+//	TreeNode left;
+//	TreeNode right;
+//
+//	TreeNode(int x) {
+//		val = x;
+//	}
+//}
 
 // second version
+// 就是把中序遍历分开操作
 class BSTIterator {
 	Stack<TreeNode> stack = new Stack<>();
 	int next_min;

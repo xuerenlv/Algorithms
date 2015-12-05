@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.math_question;
 
 public class Excel_Sheet_Column_Title_168 {
 
@@ -17,7 +17,6 @@ class Solution_Excel_Sheet_Column_Title_168 {
 		while(n!=0){
 			re=(char)(((n-1)%26)+'A')+re;
 			n=(n-1)/26;
-//			System.out.println(n);
 		}
 		return re;
 	}
