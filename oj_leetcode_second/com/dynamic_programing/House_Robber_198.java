@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.dynamic_programing;
 
 public class House_Robber_198 {
 	/*
@@ -30,7 +30,7 @@ public class House_Robber_198 {
 		if (nums.length == 1)
 			return nums[0];
 
-		int r[] = new int[nums.length + 1];
+		int r[] = new int[nums.length];
 		r[0] = nums[0];
 		r[1] = Math.max(nums[0], nums[1]);
 		for (int i = 2; i < nums.length; i++) {
