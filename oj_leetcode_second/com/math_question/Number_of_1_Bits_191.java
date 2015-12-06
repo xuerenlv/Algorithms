@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.math_question;
 
 public class Number_of_1_Bits_191 {
 	
@@ -17,10 +17,11 @@ public class Number_of_1_Bits_191 {
 	// you need to treat n as an unsigned value
 	//accepted
     public static int hammingWeight(int n) {
+  // 注意这里使用无符号移位就OK了
 //    	int i=0;
 //    	while(n!=0){
 //    		if((n&1)==1) i++;
-//    		n=n>>1;
+//    		n=n>>>1;
 //    	}
 //    
 //    	return i;

@@ -1,9 +1,9 @@
-package com.leetcode;
+package com.math_question;
 
 public class Reverse_Bits_190 {
 
 	public static void main(String[] args) {
-
+		System.out.println(Integer.toBinaryString(90));
 	}
 
 	/*
@@ -28,6 +28,7 @@ public class Reverse_Bits_190 {
         return result;
     }
 	 */
+	
     public static int reverseBits(int n) {
         char source[] = Integer.toBinaryString(n).toCharArray();
         int i=0,j=source.length-1;
