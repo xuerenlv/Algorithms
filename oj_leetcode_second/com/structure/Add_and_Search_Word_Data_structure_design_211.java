@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.structure;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ public class Add_and_Search_Word_Data_structure_design_211 {
 		wordDictionary.addWord("at");
 		wordDictionary.addWord("and");
 		wordDictionary.addWord("an");
-		
+
 		wordDictionary.addWord("add");
 		System.out.println(wordDictionary.search("a"));
 		System.out.println(wordDictionary.search(".at"));
@@ -26,6 +26,7 @@ public class Add_and_Search_Word_Data_structure_design_211 {
 }
 
 class WordDictionary {
+	
 	public TrieNode root;
 
 	public WordDictionary() {
@@ -49,36 +50,37 @@ class WordDictionary {
 			}
 
 			cur_children = cur.children;
-			
+
 			if (i == word_arr.length - 1) {
 				cur.has_word = true;
 			}
 		}
 	}
+
 	public boolean search(String word) {
 		return search_with_pos(word, word.length(), 0, root);
 	}
-	
-	public boolean search_with_pos(String word,int n,int pos,TrieNode cur) {
-		if(pos==n)
+
+	public boolean search_with_pos(String word, int n, int pos, TrieNode cur) {
+		if (pos == n)
 			return cur.has_word;
-		if(cur == null)
+		if (cur == null)
 			return false;
-		
-		if(word.charAt(pos)=='.'){
-			for(Map.Entry<Character, TrieNode> map_entry : cur.children.entrySet()){
-				return search_with_pos(word, n, pos+1, map_entry.getValue());
+
+		if (word.charAt(pos) == '.') {
+			for (Map.Entry<Character, TrieNode> map_entry : cur.children.entrySet()) {
+				 if(search_with_pos(word, n, pos + 1, map_entry.getValue()))
+					 return true;
 			}
-		}else{
+		} else {
 			char ch = word.charAt(pos);
-			if(cur.children.containsKey(ch)){
-				return search_with_pos(word, n, pos+1, cur.children.get(ch));
-			}else{
+			if (cur.children.containsKey(ch)) {
+				return search_with_pos(word, n, pos + 1, cur.children.get(ch));
+			} else {
 				return false;
 			}
 		}
 		return false;
 	}
-	
-}
 
+}

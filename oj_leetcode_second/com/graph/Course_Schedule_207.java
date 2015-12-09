@@ -1,4 +1,4 @@
-package com.leetcode.graph;
+package com.graph;
 
 import java.util.Arrays;
 import java.util.Stack;
@@ -46,9 +46,6 @@ class Solution_Course_Schedule_207 {
 
 	void dfs(int[][] adj_vex, int numCourses, int v_i, boolean[] visited, boolean[] huan, Stack<Integer> stack) {
 		if (stack.contains(v_i)) {
-			System.out.println(Arrays.toString(visited));
-			System.out.println(v_i);
-			System.out.println(stack.toString());
 			huan[0] = true;
 			return;
 		}
@@ -60,6 +57,16 @@ class Solution_Course_Schedule_207 {
 			}
 		}
 		stack.pop();
+	}
+
+	// 2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+	public boolean canFinish___2(int numCourses, int[][] prerequisites) {
+		Graph graph = new Graph(numCourses);
+
+		for (int i = 0; i < prerequisites.length; i++)
+			graph.addEdge(prerequisites[i][0], prerequisites[i][1]);
+
+		return !graph.isCyclic();
 	}
 
 	class Graph {
@@ -78,28 +85,28 @@ class Solution_Course_Schedule_207 {
 		// check if there's a cycle in the graph
 		boolean isCyclic() {
 			boolean[] visited = new boolean[n];
-			boolean[] visited_2 = new boolean[n];
+			boolean[] stack = new boolean[n];
 
 			for (int u = 0; u < n; u++)
-				if (dfs(u, visited, visited_2))
+				if (dfs(u, visited, stack))
 					return true;
 
 			return false;
 		}
 
-		boolean dfs(int u, boolean[] visited, boolean[] visited_2) {
+		boolean dfs(int u, boolean[] visited, boolean[] stack) {
 			// mark it as visited
 			visited[u] = true;
-			visited_2[u] = true;
+			stack[u] = true;
 
 			// check all its neighbors
 			for (int v = 0; v < n; v++)
 				if (matrix[u][v] > 0)
-					if (visited_2[v] == true || (visited[v] == false && dfs(v, visited, visited_2)))
+					if (stack[v] == true || (visited[v] == false && dfs(v, visited, stack)))
 						return true;
 
 			// remove the vertex from recursion stack
-			visited_2[u] = false;
+			stack[u] = false;
 
 			return false;
 		}
