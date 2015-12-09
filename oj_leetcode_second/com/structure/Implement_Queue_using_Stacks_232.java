@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.structure;
 
 import java.util.Stack;
 
@@ -28,7 +28,7 @@ class MyQueue {
 	public void pop() {
 		if (stack_s.size() != 0) {
 			stack_s.pop();
-		}else{
+		} else {
 			while (stack_f.size() != 0) {
 				stack_s.push(stack_f.pop());
 			}

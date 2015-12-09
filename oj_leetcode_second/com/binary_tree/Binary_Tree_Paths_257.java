@@ -1,8 +1,7 @@
-package com.leetcode.link;
+package com.binary_tree;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Binary_Tree_Paths_257 {
 
@@ -22,6 +21,7 @@ class Solution_Binary_Tree_Paths_257 {
 		return re;
 	}
 
+	// 递归
 	void tran_tree(TreeNode root, String houxuan, List<String> re) {
 		if (houxuan.length() == 0) {
 			houxuan = new Integer(root.val).toString();
