@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.dynamic_programing;
 
 public class Perfect_Squares_279 {
 
@@ -10,6 +10,7 @@ public class Perfect_Squares_279 {
 }
 
 class Solution_Perfect_Squares_279 {
+	// dynamic prgraming
 	public int numSquares(int n) {
 		int[] d = new int[n + 1];
 		d[1] = 1;
@@ -18,7 +19,7 @@ class Solution_Perfect_Squares_279 {
 			int min = Integer.MAX_VALUE;
 			int j = 1;
 			while (j * j <= i) {
-				if (j * j == i) {
+				if (j * j == i) {// min为1是最小值，所以可以跳出循环
 					min = 1;
 					break;
 				}
