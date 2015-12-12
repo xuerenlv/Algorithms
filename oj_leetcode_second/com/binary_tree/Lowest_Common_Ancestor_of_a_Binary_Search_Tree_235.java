@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.binary_tree;
 
 public class Lowest_Common_Ancestor_of_a_Binary_Search_Tree_235 {
 
@@ -9,6 +9,29 @@ public class Lowest_Common_Ancestor_of_a_Binary_Search_Tree_235 {
 }
 
 class Solution_Lowest_Common_Ancestor_of_a_Binary_Search_Tree_235 {
+	// 更加好的做法，，改写成迭代的形式
+	public TreeNode lowestCommonAncestor_3(TreeNode root, TreeNode p, TreeNode q) {
+		while (true) {
+			if (root.val > p.val && root.val > q.val)
+				root = root.left;
+			else if (root.val < p.val && root.val < q.val)
+				root = root.right;
+			else
+				return root;
+		}
+	}
+
+	// 更好的做法
+	public TreeNode lowestCommonAncestor_2(TreeNode root, TreeNode p, TreeNode q) {
+		if (root.val > p.val && root.val > q.val) {
+			return lowestCommonAncestor(root.left, p, q);
+		} else if (root.val < p.val && root.val < q.val) {
+			return lowestCommonAncestor(root.right, p, q);
+		} else {
+			return root;
+		}
+	}
+
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 		if (root == p || root == q)
 			return root;
@@ -27,6 +50,7 @@ class Solution_Lowest_Common_Ancestor_of_a_Binary_Search_Tree_235 {
 		return does_have_one(root, p) && does_have_one(root, q);
 	}
 
+	// root中是否包含当前节点
 	boolean does_have_one(TreeNode root, TreeNode p) {
 		if (root == null)
 			return false;

@@ -1,4 +1,4 @@
-package com.leetcode.link;
+package com.binary_tree;
 
 public class Lowest_Common_Ancestor_of_a_Binary_Tree_236 {
 
@@ -13,11 +13,11 @@ class Solution_Lowest_Common_Ancestor_of_a_Binary_Tree_236 {
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 		if (root == null)
 			return null;
-		if (root == p || root == q)
+		if (root == p || root == q) // p，q 有一个就返回
 			return root;
 		TreeNode L = lowestCommonAncestor(root.left, p, q);
 		TreeNode R = lowestCommonAncestor(root.right, p, q);
-		if (L != null && R != null)
+		if (L != null && R != null) // 两边各有一个
 			return root;
 		return L != null ? L : R;
 	}

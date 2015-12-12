@@ -1,4 +1,5 @@
-package com.leetcode.link;
+package com.binary_tree;
+
 
 public class Kth_Smallest_Element_in_a_BST_230 {
 
@@ -19,6 +20,7 @@ class Solution_Kth_Smallest_Element_in_a_BST_230 {
 		return kthSmallest(root.right, k - left - 1);
 	}
 
+	// 计算一个二叉树中节点的数量
 	private int calc(TreeNode root) {
 		if (root == null)
 			return 0;
