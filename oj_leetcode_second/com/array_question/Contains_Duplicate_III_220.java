@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 import java.util.HashMap;
 
@@ -25,7 +25,6 @@ class Solution_Contains_Duplicate_III_220 {
           	   num = nums[i];
           	   for(int j =(i-k<=0)?0:(i-k);j<i;j++){
           		   if(map.containsKey(j) && Math.abs(map.get(j)-num)-t<=0){
-//          			   System.out.println(map.get(j)+" "+num+" "+t);
           			   return true;
           		   }
           	   }

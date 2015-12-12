@@ -46,6 +46,7 @@ class Solution_Group_Anagrams_49 {
 		return re;
 	}
 
+	// 对str自身进行排序，从而消除，，，，
 	String sort_str(String s) {
 		char[] arr = s.toCharArray();
 		Arrays.sort(arr);
