@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 import java.util.Arrays;
 
@@ -18,6 +18,7 @@ class Solution_Kth_Largest_Element_in_an_Array_215 {
 			k_num[i] = nums[i];
 		}
 
+		// 这里用的是一个优先级队列的思想
 		Arrays.sort(k_num);
 		int num;
 		for (int i = k; i < nums.length; i++) {
@@ -27,37 +28,24 @@ class Solution_Kth_Largest_Element_in_an_Array_215 {
 			insert(k_num, num);
 		}
 
-		reverse(k_num);
-		return k_num[k - 1];
+		return k_num[0];
 	}
 
 	void insert(int[] nums, int num) {
 		int len = nums.length;
-		nums[0] = num;
-		for (int i = 0; i < len-1; i++) {
-			if(nums[i] > nums[i+1]){
-				swap(nums,i,i+1);
+		nums[0] = num;// 最小值覆盖，然后进行一个排序
+		for (int i = 0; i < len - 1; i++) {
+			if (nums[i] > nums[i + 1]) {
+				swap(nums, i, i + 1);
 			}
 		}
 	}
-	
-	void swap(int[] num,int i,int j){
+
+	void swap(int[] num, int i, int j) {
 		int temp;
 		temp = num[i];
 		num[i] = num[j];
 		num[j] = temp;
 	}
 
-	void reverse(int[] num) {
-		int i = 0;
-		int j = num.length - 1;
-		int temp;
-		while (i < j) {
-			temp = num[i];
-			num[i] = num[j];
-			num[j] = temp;
-			i++;
-			j--;
-		}
-	}
 }

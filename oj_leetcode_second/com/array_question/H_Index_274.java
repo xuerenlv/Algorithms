@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.array_question;
 
 import java.util.Arrays;
 
@@ -16,9 +16,10 @@ class Solution_H_Index_274 {
 		if (citations == null || citations.length == 0)
 			return 0;
 		Arrays.sort(citations);
-		int[] temp = new int[citations.length];
 
+		// 降序排列
 		int index = 0;
+		int[] temp = new int[citations.length];
 		for (int i = citations.length - 1; i >= 0; i--, index++) {
 			temp[index] = citations[i];
 		}
