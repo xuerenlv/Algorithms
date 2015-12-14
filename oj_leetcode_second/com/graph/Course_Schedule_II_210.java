@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,7 +48,8 @@ class Solution_Course_Schedule_II_210 {
                 indegrees[x]++;  
             }  
         }  
-          
+        
+        // queue 里面放入读为 0 的顶点
         Queue<Integer> queue = new LinkedList<Integer>();  
         for (int i = 0; i < numCourses; i++) {  
             if (indegrees[i] == 0) {  

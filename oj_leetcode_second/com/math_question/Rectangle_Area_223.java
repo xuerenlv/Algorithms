@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.math_question;
 
 public class Rectangle_Area_223 {
 
@@ -17,7 +17,7 @@ class Solution_Rectangle_Area_223 {
 
 		if (A1 >= C1 || B1 >= D1) {
 			return area(A, B, C, D) + area(E, F, G, H);
-		} else {
+		} else {// 分成的两个矩形没有交集
 			return area(A, B, C, D) + area(E, F, G, H) - area(A1, B1, C1, D1);
 		}
 	}

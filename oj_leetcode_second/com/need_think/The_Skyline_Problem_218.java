@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.need_think;
 
 import java.util.ArrayList;
 import java.util.Collections;

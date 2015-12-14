@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.structure;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,9 +13,9 @@ public class Peeking_Iterator_284 {
 
 }
 
-
-//Java Iterator interface reference:
-//https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
+// 就是在原有的 iterator 上，实现一个 peek 方法
+// Java Iterator interface reference:
+// https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
 class PeekingIterator implements Iterator<Integer> {
 	Iterator<Integer> iterator;
 	List<Integer> peek_con = new ArrayList<>();
@@ -24,10 +24,10 @@ class PeekingIterator implements Iterator<Integer> {
 		this.iterator = iterator;
 	}
 
- // Returns the next element in the iteration without advancing the iterator.
+	// Returns the next element in the iteration without advancing the iterator.
 	public Integer peek() {
-		if(peek_con.size()==0){
-			if(iterator.hasNext())
+		if (peek_con.size() == 0) {
+			if (iterator.hasNext())
 				peek_con.add(iterator.next());
 		}
 		return peek_con.get(0);
@@ -38,33 +38,33 @@ class PeekingIterator implements Iterator<Integer> {
 	@Override
 	public Integer next() {
 		int ne = 0;
-	    if(peek_con.size() != 0){
-	    	ne = peek_con.get(0);
-	    	peek_con.remove(0);
-	    	return ne;
-	    }
-	    
-	    if(iterator.hasNext())
-	    	return iterator.next();
-	    
-	    return -1;
+		if (peek_con.size() != 0) {
+			ne = peek_con.get(0);
+			peek_con.remove(0);
+			return ne;
+		}
+
+		if (iterator.hasNext())
+			return iterator.next();
+
+		return -1;
 	}
 
 	@Override
 	public boolean hasNext() {
-	    if( peek_con.size()==0 && !iterator.hasNext()){
-	    	return false;
-	    }else{
-	    	return true;
-	    }
+		if (peek_con.size() == 0 && !iterator.hasNext()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	@Override
 	public void remove() {
-		if(peek_con.size() != 0){
-	    	peek_con.remove(0);
-	    }else{
-	    	iterator.next();
-	    }
+		if (peek_con.size() != 0) {
+			peek_con.remove(0);
+		} else {
+			iterator.next();
+		}
 	}
 }
