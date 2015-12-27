@@ -8,6 +8,85 @@ public class Forth_leval {
 
 }
 
+class Solution_10 {
+    /**
+     *@param n: Given a decimal number that is passed in as a string
+     *@return: A string
+     */
+    public String binaryRepresentation(String n) {
+        // write your code here
+        int intPart = Integer.parseInt(n.substring(0, n.indexOf('.')));
+          double decPart = Double.parseDouble(n.substring(n.indexOf('.')));
+          String intstr = "";
+         String decstr = "";
+         
+         if (intPart == 0) intstr += '0';
+         while (intPart > 0) {
+             int c = intPart % 2;
+             intstr = c + intstr;
+             intPart = intPart / 2;
+         }
+        
+         while (decPart > 0.0) {
+             if (decstr.length() > 32) return "ERROR";
+             double r = decPart * 2;
+             if (r >= 1.0) {
+                 decstr += '1';
+                 decPart = r - 1.0;
+             }
+             else {
+                 decstr += '0';
+                 decPart = r;
+             }
+            }
+         return decstr.length() > 0? intstr + "." + decstr : intstr;
+    }
+}
+
+
+
+//不同的二叉查找树 - C++ 
+//class Solution {
+//public:
+//    /**
+//     * @paramn n: An integer
+//     * @return: An integer
+//     */
+//    int numTrees(int n) {
+//        int* dp = new int[n+1];
+//        fill(dp, dp+n+1, 0);
+//        dp[0]=dp[1]=1;
+//        for(int i=2;i<n+1;i++){
+//            for(int j=1;j<=i;j++){
+//                dp[i] += dp[j-1]*dp[i-j];
+//            }
+//        }
+//        int re = dp[n];
+//        delete dp;
+//        return re;
+//    }
+//};
+
+//中等 快速幂 - C++ 
+//class Solution {
+//public:
+//    /*
+//     * @param a, b, n: 32bit integers
+//     * @return: An integer
+//     */
+//    int fastPower(int a, int b, int n) {
+//        if(n==0)
+//            return 1%b;
+//        if(n==1)
+//            return a%b;
+//        long long temp = fastPower(a,b,n/2);
+//        if(n&1)
+//            return ((temp*temp)%b)*a%b;
+//        else
+//            return temp*temp%b;
+//    }
+//};
+
 // 更新二进制位
 class Solution_Forth_leval_5 {
     /**

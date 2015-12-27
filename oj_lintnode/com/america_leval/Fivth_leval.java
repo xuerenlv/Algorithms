@@ -1,0 +1,258 @@
+package com.america_leval;
+
+import java.util.ArrayList;
+
+public class Fivth_leval {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+
+// 下一个排列
+class Solution_Fivth_leval_7 {
+	/**
+	 * @param nums:
+	 *            an array of integers
+	 * @return: return nothing (void), do not return anything, modify nums
+	 *          in-place instead
+	 */
+	public int[] nextPermutation(int[] num) {
+		// 1.找到最后一个升序位置pos
+		int pos = -1;
+		for (int i = num.length - 1; i > 0; i--) {
+			if (num[i] > num[i - 1]) {
+				pos = i - 1;
+				break;
+			}
+		}
+
+		// 2.如果不存在升序，即这个数是最大的，那么反排这个数组
+		if (pos < 0) {
+			reverse(num, 0, num.length - 1);
+			return num;
+		}
+
+		// 3.存在升序，那么找到pos之后最后一个比它大的位置
+		for (int i = num.length - 1; i > pos; i--) {
+			if (num[i] > num[pos]) {
+				int tmp = num[i];
+				num[i] = num[pos];
+				num[pos] = tmp;
+				break;
+			}
+		}
+
+		// 4.反排pos之后的数
+		reverse(num, pos + 1, num.length - 1);
+		return num;
+	}
+
+	// 反转数组
+	public void reverse(int[] num, int begin, int end) {
+		int l = begin, r = end;
+		while (l < r) {
+			int tmp = num[l];
+			num[l] = num[r];
+			num[r] = tmp;
+			l++;
+			r--;
+		}
+	}
+}
+
+// 跳跃游戏 从后向前看，也是可以的
+class Solution_Fivth_leval_6 {
+	/**
+	 * @param A:
+	 *            A list of integers
+	 * @return: The boolean answer
+	 */
+	public boolean canJump(int[] A) {
+		boolean[] can = new boolean[A.length];
+		can[A.length - 1] = true;
+
+		for (int i = A.length - 2; i >= 0; i--) {
+			if (i + A[i] >= A.length) {
+				can[i] = true;
+				continue;
+			}
+			if (A[i] == 0) {
+				can[i] = false;
+				continue;
+			}
+
+			for (int j = 1; j <= A[i]; j++) {
+				if (can[i + j] == true) {
+					can[i] = true;
+					continue;
+				}
+			}
+
+		}
+		return can[0];
+
+	}
+
+}
+
+// 删除数字 删除第一个峰点
+class Solution_Fivth_leval_5 {
+	/**
+	 * @param A:
+	 *            A positive integer which has N digits, A is a string.
+	 * @param k:
+	 *            Remove k digits.
+	 * @return: A string
+	 */
+	public String DeleteDigits(String A, int k) {
+		String temp = A;
+		while (k-- > 0) {
+			int i = 0;
+			while (i < temp.length() - 1 && temp.charAt(i) <= temp.charAt(i + 1))
+				i++;
+			temp = temp.substring(0, i) + temp.substring(i + 1, temp.length());
+		}
+		int i = 0;
+		while (i < temp.length() && temp.charAt(i) == '0')
+			i++;
+
+		return temp.substring(i);
+	}
+}
+
+// 最大数
+class Solution_4 {
+	/**
+	 * @param num:
+	 *            A list of non negative integers
+	 * @return: A string
+	 */
+	public String largestNumber(int[] num) {
+		boolean swap_ornot = false;
+		int swap;
+		for (int i = 0; i < num.length - 1; i++) {
+			swap_ornot = false;
+			for (int j = num.length - 1; j > i; j--) {
+				if (!my_cmp(num[j - 1], num[j])) {
+					swap = num[j];
+					num[j] = num[j - 1];
+					num[j - 1] = swap;
+					swap_ornot = true;
+				}
+			}
+			if (!swap_ornot)
+				break;
+		}
+
+		String re = "";
+		for (int i = 0; i < num.length; i++) {
+			re += new Integer(num[i]).toString();
+		}
+		if (num.length == 0 || num[0] == 0) {
+			return "0";
+		} else {
+			return re;
+		}
+
+	}
+
+	boolean my_cmp(int pre, int next) {
+		// return Long.valueOf(new Integer(pre).toString() + new
+		// Integer(next).toString()) > Long
+		// .valueOf(new Integer(next).toString() + new Integer(pre).toString());
+		if (pre == next) {
+			return true;
+		}
+		String no_change = new Integer(pre).toString() + new Integer(next).toString();
+		String change = new Integer(next).toString() + new Integer(pre).toString();
+
+		for (int i = 0; i < no_change.length(); i++) {
+			if (no_change.charAt(i) != change.charAt(i)) {
+				if (no_change.charAt(i) > change.charAt(i)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+		return true;
+
+	}
+}
+
+// 加油站
+class Solution_3 {
+	/**
+	 * @param gas:
+	 *            an array of integers
+	 * @param cost:
+	 *            an array of integers
+	 * @return: an integer
+	 */
+	public int canCompleteCircuit(int[] gas, int[] cost) {
+		int start = 0;
+		int all_get = 0;
+		int start_sum = 0;
+		for (int i = 0; i < gas.length; i++) {
+			all_get += gas[i] - cost[i];
+			start_sum += gas[i] - cost[i];
+			if (start_sum < 0) {
+				start = (i + 1) % gas.length;
+				start_sum = 0;
+			}
+		}
+
+		return all_get >= 0 ? start : -1;
+	}
+}
+
+// 主元素
+class Solution_2 {
+	/**
+	 * @param nums:
+	 *            a list of integers
+	 * @return: find a majority number
+	 */
+	public int majorityNumber(ArrayList<Integer> nums) {
+		if (nums == null || nums.size() == 0) {
+			return -1;
+		}
+		int num = nums.get(0), count = 1;
+		for (int i = 1; i < nums.size(); i++) {
+			if (count == 0) {
+				num = nums.get(i);
+				count++;
+				continue;
+			}
+			if (nums.get(i) == num) {
+				count++;
+			} else {
+				count--;
+			}
+		}
+
+		return num;
+	}
+}
+
+// 落单的数
+class Solution_1 {
+	/**
+	 * @param A
+	 *            : an integer array return : a integer
+	 */
+	public int singleNumber(int[] A) {
+		if (A.length == 0) {
+			return 0;
+		}
+
+		int n = A[0];
+		for (int i = 1; i < A.length; i++) {
+			n = n ^ A[i];
+		}
+
+		return n;
+	}
+}
