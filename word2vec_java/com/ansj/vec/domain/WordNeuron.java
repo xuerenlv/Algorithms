@@ -31,6 +31,7 @@ public class WordNeuron extends Neuron {
         return neurons;
     }
 
+    // name 是 词 ， freq 是词频
     public WordNeuron(String name, int freq, int layerSize) {
         this.name = name;
         this.freq = freq;
