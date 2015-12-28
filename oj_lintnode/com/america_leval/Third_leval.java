@@ -12,6 +12,39 @@ public class Third_leval {
 
 }
 
+// 搜索二维矩阵 II
+class Solution_Third_leval_13 {
+	/**
+	 * @param matrix:
+	 *            A list of lists of integers
+	 * @param: A
+	 *             number you want to search in the matrix
+	 * @return: An integer indicate the occurrence of target in the given matrix
+	 */
+	public int searchMatrix(int[][] matrix, int target) {
+		int m = matrix.length;
+		if (m == 0)
+			return 0;
+		int n = matrix[0].length;
+
+		int start_m = 0;
+		int start_n = n - 1;
+		int count = 0;
+		while (start_m < m && start_n >= 0) {
+			if (matrix[start_m][start_n] == target) {
+				count++;
+				start_m++;
+			} else if (matrix[start_m][start_n] < target) {
+				start_m++;
+			} else {
+				start_n--;
+			}
+		}
+
+		return count;
+	}
+}
+
 // 搜索旋转排序数组 II
 class Solution_Third_leval_12 {
 	/**

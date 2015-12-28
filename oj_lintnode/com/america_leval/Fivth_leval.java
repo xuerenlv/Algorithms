@@ -1,6 +1,9 @@
 package com.america_leval;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Fivth_leval {
 
@@ -8,6 +11,97 @@ public class Fivth_leval {
 
 	}
 
+}
+
+// 主元素 III
+class Solution_Fivth_leval_9 {
+	/**
+	 * @param nums:
+	 *            A list of integers
+	 * @param k:
+	 *            As described
+	 * @return: The majority number
+	 */
+	public int majorityNumber(ArrayList<Integer> nums, int k) {
+		HashMap<Integer, Integer> k_map_count = new HashMap<>();
+
+		for (int i = 0; i < nums.size(); i++) {
+			int num = nums.get(i);
+			if (k_map_count.containsKey(num)) {
+				k_map_count.put(num, k_map_count.get((Integer) num) + 1);
+			} else if (k_map_count.size() < k) {
+				k_map_count.put(num, 1);
+			} else {
+				ArrayList<Integer> remove_key = new ArrayList<>();
+				Set<Map.Entry<Integer, Integer>> entry_set = k_map_count.entrySet();
+				for (Map.Entry<Integer, Integer> one_entry : entry_set) {
+					if (one_entry.getValue() == 1)
+						remove_key.add(one_entry.getKey());
+					else {
+						k_map_count.put(one_entry.getKey(), one_entry.getValue() - 1);
+					}
+				}
+				for (Integer key : remove_key)
+					k_map_count.remove(key);
+			}
+		}
+
+		int re = Integer.MAX_VALUE;
+		int count = 0;
+		for (Map.Entry<Integer, Integer> one_entry : k_map_count.entrySet()) {
+			if (one_entry.getValue() > count) {
+				count = one_entry.getValue();
+				re = one_entry.getKey();
+			}
+		}
+		return re;
+
+	}
+}
+
+// 主元素 II 采用抵消法
+class Solution_Fivth_leval_8 {
+	/**
+	 * @param nums:
+	 *            A list of integers
+	 * @return: The majority number that occurs more than 1/3
+	 */
+	public int majorityNumber(ArrayList<Integer> nums) {
+		if (nums == null)
+			return 0;
+		int num1 = Integer.MIN_VALUE;
+		int times1 = 0;
+		int num2 = Integer.MIN_VALUE;
+		int times2 = 0;
+		for (int i = 0; i < nums.size(); i++) {
+			int num = nums.get(i);
+			if (num1 == num) {
+				times1++;
+			} else if (num2 == num) {
+				times2++;
+			} else if (times1 == 0) {
+				times1 = 1;
+				num1 = num;
+			} else if (times2 == 0) {
+				times2 = 1;
+				num2 = num;
+			} else {
+				times1--;
+				times2--;
+			}
+		}
+		times1 = 0;
+		times2 = 0;
+		for (int i = 0; i < nums.size(); i++) {
+			int num = nums.get(i);
+			if (num == num1) {
+				times1++;
+			} else if (num == num2) {
+				times2++;
+			}
+		}
+		return times1 > times2 ? num1 : num2;
+	}
 }
 
 // 下一个排列
