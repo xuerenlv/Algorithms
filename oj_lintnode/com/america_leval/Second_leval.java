@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-public class second_leval {
+public class Second_leval {
 
 	public static void main(String[] args) {
 

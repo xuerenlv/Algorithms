@@ -1,14 +1,113 @@
 package com.america_leval;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class Fivth_leval {
 
 	public static void main(String[] args) {
+		System.out.println(Arrays.toString(new Solution_Fivth_leval_10().to_binary(4)));
+	}
 
+}
+
+// 跳跃游戏 II
+class Solution_Fivth_leval_12 {
+	/**
+	 * @param A:
+	 *            A list of lists of integers
+	 * @return: An integer
+	 */
+	public int jump(int[] A) {
+		if (A.length <= 1)
+			return 0;
+
+		int i = 0, step = 1;
+		while (i + A[i] < A.length - 1) {
+
+			int maxindex = i;
+			for (int j = i + 1; j <= i + A[i]; j++)
+				if (j + A[j] >= maxindex + A[maxindex]) {
+					maxindex = j;
+				}
+			step++;
+			i = maxindex;
+		}
+		return step;
+	}
+}
+
+// 落单的数 III
+class Solution_Fivth_leval_11 {
+	/**
+	 * @param A
+	 *            : An integer array
+	 * @return : Two integers
+	 */
+	public List<Integer> singleNumberIII(int[] A) {
+		int mask = 0;
+		for (int i = 0; i < A.length; i++)
+			mask ^= A[i];
+		mask = mask - 1;
+
+		int re1 = 0, re2 = 0;
+		for (int i = 0; i < A.length; i++) {
+			if ((A[i] & mask) != 0) {
+				re1 ^= A[i];
+			} else {
+				re2 ^= A[i];
+			}
+
+		}
+
+		List<Integer> li = new ArrayList<>();
+		li.add(re1);
+		li.add(re2);
+		return li;
+	}
+}
+
+// 落单的数 II
+class Solution_Fivth_leval_10 {
+	/**
+	 * @param A
+	 *            : An integer array
+	 * @return : An integer
+	 */
+	public int singleNumberII(int[] A) {
+		int[] wei = new int[32];
+
+		for (int i = 0; i < A.length; i++) {
+			Integer[] bin = to_binary(A[i]);
+			for (int j = 0; j < bin.length; j++) {
+				if (bin[j] == 1)
+					wei[j]++;
+			}
+		}
+
+		int re = 0;
+		for (int i = 0; i < 32; i++) {
+			if (wei[i] % 3 != 0)
+				re += 1 << i;
+
+		}
+
+		return re;
+	}
+
+	Integer[] to_binary(int num) {
+		ArrayList<Integer> bin = new ArrayList<>();
+		while (num != 0) {
+			bin.add(num & 1);
+			num = num >>> 1;
+		}
+		// Collections.reverse(bin);
+		Integer[] re = bin.toArray(new Integer[bin.size()]);
+		return re;
 	}
 
 }
@@ -180,7 +279,7 @@ class Solution_Fivth_leval_6 {
 			for (int j = 1; j <= A[i]; j++) {
 				if (can[i + j] == true) {
 					can[i] = true;
-					continue;
+					break;
 				}
 			}
 
