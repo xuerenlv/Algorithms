@@ -1,5 +1,6 @@
 package com.america_leval;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -8,9 +9,183 @@ import java.util.Stack;
 public class Seventh_leval {
 
 	public static void main(String[] args) {
-
+		TreeNode p = new TreeNode(1);
+		p.left = new TreeNode(2);
+		p.left.left = new TreeNode(3);
+		p.left.left.left = new TreeNode(4);
+		System.out.println(new Solution_Seventh_leval_9().serialize(p));
 	}
 
+}
+
+// 二叉树的锯齿形层次遍历
+class Solution_Seventh_leval_14 {
+	/**
+	 * @param root:
+	 *            The root of binary tree.
+	 * @return: A list of lists of integer include the zigzag level order
+	 *          traversal of its nodes' values
+	 */
+	public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
+		ArrayList<ArrayList<Integer>> re = new ArrayList<>();
+		if (root == null)
+			return re;
+
+		Queue<TreeNode> queue = new ArrayDeque<>();
+		queue.add(root);
+
+		boolean left_to_right = true;
+		while (!queue.isEmpty()) {
+			int cur = 0;
+			int count = queue.size();
+			ArrayList<Integer> in = new ArrayList<>();
+			while (cur < count) {
+				TreeNode p = queue.remove();
+				if (left_to_right) {
+					in.add(p.val);
+				} else {
+					in.add(0, p.val);
+				}
+				if (p.left != null) {
+					queue.add(p.left);
+				}
+				if (p.right != null)
+					queue.add(p.right);
+				cur++;
+			}
+			left_to_right = !left_to_right;
+			re.add(in);
+		}
+		return re;
+	}
+}
+
+// 中序遍历和后序遍历树构造二叉树
+class Solution_Seventh_leval_13 {
+	/**
+	 * @param inorder
+	 *            : A list of integers that inorder traversal of a tree
+	 * @param postorder
+	 *            : A list of integers that postorder traversal of a tree
+	 * @return : Root of a tree
+	 */
+	public TreeNode buildTree(int[] inorder, int[] postorder) {
+		return buildTree(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
+	}
+
+	TreeNode buildTree(int[] inorder, int in_s, int in_e, int[] postorder, int p_s, int p_e) {
+		if (p_s > p_e)
+			return null;
+		if (p_s == p_e)
+			return new TreeNode(postorder[p_s]);
+
+		int ch = postorder[p_e];
+		int i;
+		for (i = in_s; i <= in_e; i++) {
+			if (inorder[i] == ch) {
+				break;
+			}
+		}
+		TreeNode root = new TreeNode(ch);
+		// 先序，后序，这个地方的处理，还是不一样的
+		root.left = buildTree(inorder, in_s, i - 1, postorder, p_s, p_s + i - in_s - 1);
+		root.right = buildTree(inorder, i + 1, in_e, postorder, p_s + i - in_s, p_e - 1);
+		return root;
+	}
+}
+
+class Solution_Seventh_leval_12 {
+	/**
+	 * @param root:
+	 *            The root of binary tree.
+	 * @return: Inorder in ArrayList which contains node values.
+	 */
+	public ArrayList<Integer> inorderTraversal(TreeNode root) {
+		ArrayList<Integer> re = new ArrayList<>();
+		// 中序遍历非递归，使用 栈
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+		TreeNode p = root;
+		while (p != null || !stack.isEmpty()) {
+			while (p != null) { // 左分支全部进栈
+				stack.push(p);
+				p = p.left;
+			}
+			if (!stack.isEmpty()) {
+				p = stack.pop();
+				re.add(p.val);
+				p = p.right;// 处理过根节点之后，处理右分支
+			}
+		}
+		return re;
+	}
+}
+
+// 二叉树的最小深度
+class Solution_Seventh_leval_11 {
+	/**
+	 * @param root:
+	 *            The root of binary tree.
+	 * @return: An integer.
+	 */
+	public int minDepth(TreeNode root) {
+		if (root == null)
+			return 0;
+		if (root.left == null && root.right == null)
+			return 1;
+		if (root.left != null && root.right != null)
+			return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+		if (root.left != null)
+			return minDepth(root.left) + 1;
+		if (root.right != null)
+			return minDepth(root.right) + 1;
+		return 0;
+	}
+}
+
+// 删除二叉查找树的节点
+class Solution_Seventh_leval_10 {
+	/**
+	 * @param root:
+	 *            The root of the binary search tree.
+	 * @param value:
+	 *            Remove the node with given value.
+	 * @return: The root of the binary search tree after removal.
+	 */
+	public TreeNode removeNode(TreeNode root, int value) {
+		if (root == null)
+			return null;
+		if (root.val == value) {
+			if (root.left == null && root.right == null)
+				return null;
+			if (root.right != null && root.left != null) {
+				// 把最右子节点删除
+				TreeNode pre = root.left, cur = root.left;
+				while (cur.right != null) {
+					pre = cur;
+					cur = cur.right;
+				}
+
+				root.val = cur.val;
+				if (pre == cur) {
+					root.left = cur.left;
+				} else {
+					pre.right = cur.left;
+				}
+			} else if (root.left != null) {
+				return root.left;
+			} else {
+				return root.right;
+			}
+
+		} else {
+			if (value > root.val) {
+				root.right = removeNode(root.right, value);
+			} else {
+				root.left = removeNode(root.left, value);
+			}
+		}
+		return root;
+	}
 }
 
 // 二叉树的序列化和反序列化
@@ -21,6 +196,36 @@ class Solution_Seventh_leval_9 {
 	 * can be easily deserialized by your own "deserialize" method later.
 	 */
 	public String serialize(TreeNode root) {
+		String re = "{";
+		if (root == null)
+			return re + "}";
+		Queue<TreeNode> queue = new LinkedList<>();
+		queue.add(root);
+		TreeNode p;
+		re += root.val + ",";
+		while (!queue.isEmpty()) {
+			p = queue.poll();
+			if (p.left == null) {
+				re += "#,";
+			} else {
+				re += new Integer(p.left.val).toString() + ",";
+			}
+			if (p.right == null) {
+				re += "#,";
+			} else {
+				re += new Integer(p.right.val).toString() + ",";
+			}
+			if (p.left != null)
+				queue.add(p.left);
+			if (p.right != null)
+				queue.add(p.right);
+		}
+		re = re.substring(0, re.length() - 1);
+		while (re.substring(re.lastIndexOf(",") + 1, re.length()).equals("#")) {
+			re = re.substring(0, re.lastIndexOf(","));
+		}
+
+		return re + "}";
 	}
 
 	/**
@@ -31,7 +236,23 @@ class Solution_Seventh_leval_9 {
 	 * "serialize" method.
 	 */
 	public TreeNode deserialize(String data) {
+		String[] values = data.substring(1, data.length() - 1).split(",");
+		if (values.length == 0)
+			return null;
+		return construct_bin_tree(values, 0);
 	}
+
+	TreeNode construct_bin_tree(String[] data, int start) {
+		if (data.length < 1 || start < 0 || data.length <= start || data[start].equals("#")) {
+			return null;
+		}
+
+		TreeNode root = new TreeNode(new Integer(data[start]));
+		root.left = construct_bin_tree(data, start * 2 + 1);
+		root.right = construct_bin_tree(data, start * 2 + 2);
+		return root;
+	}
+
 }
 
 // 二叉查找树中搜索区间
