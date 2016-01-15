@@ -54,6 +54,7 @@ class Solution_Distinct_Subsequences_115 {
 		return dp[tl][sl];
 	}
 
+	// 这个易于理解	
 	public int numDistinct(String s, String t) {
 		if (s == null || t == null)
 			return 0;

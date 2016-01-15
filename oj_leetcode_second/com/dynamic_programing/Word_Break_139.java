@@ -24,16 +24,12 @@ class Solution_Word_Break_139 {
 		f[0] = true;
 		for (int i = 1; i < len + 1; i++) {
 			for (int j = 0; j < i; j++) {
-				// System.out.println(Arrays.toString(f)+" "+j+"
-				// "+s.substring(j, i)+" "+wordDict.contains(s.substring(j,
-				// i)));
 				if (f[j] && wordDict.contains(s.substring(j, i))) {
 					f[i] = true;
 					break;
 				}
 			}
 		}
-		// System.out.println("final: "+Arrays.toString(f));
 		return f[len];
 	}
 }
