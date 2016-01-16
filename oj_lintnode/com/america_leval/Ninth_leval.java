@@ -1,6 +1,6 @@
 package com.america_leval;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -15,6 +15,105 @@ public class Ninth_leval {
 
 }
 
+// 最小调整代价
+class Solution_Ninth_leval_12 {
+	/**
+	 * @param A:
+	 *            An integer array.
+	 * @param target:
+	 *            An integer.
+	 */
+	public int MinAdjustmentCost(ArrayList<Integer> A, int target) {
+		
+		
+		
+		
+	}
+}
+
+// 最小子数组
+class Solution_Ninth_leval_11 {
+	/**
+	 * @param nums:
+	 *            a list of integers
+	 * @return: A integer indicate the sum of minimum subarray
+	 */
+	public int minSubArray(ArrayList<Integer> nums) {
+		if (nums.size() == 0)
+			return 0;
+
+		int min = nums.get(0);
+		int this_min = nums.get(0);
+		for (int i = 1; i < nums.size(); i++) {
+			this_min = Math.min(this_min + nums.get(i), nums.get(i));
+			min = Math.min(this_min, min);
+		}
+
+		return min;
+	}
+}
+
+// 交叉字符串
+class Solution_Ninth_leval_10 {
+	/**
+	 * Determine whether s3 is formed by interleaving of s1 and s2.
+	 * 
+	 * @param s1,
+	 *            s2, s3: As description.
+	 * @return: true or false.
+	 */
+	public boolean isInterleave_2(String s1, String s2, String s3) {
+		if ((s1.length() + s2.length()) != s3.length())
+			return false;
+
+		boolean[][] matrix = new boolean[s2.length() + 1][s1.length() + 1];
+		matrix[0][0] = true;
+		for (int i = 1; i < matrix[0].length; i++) {
+			matrix[0][i] = matrix[0][i - 1] && (s1.charAt(i - 1) == s3.charAt(i - 1));
+		}
+		for (int i = 1; i < matrix.length; i++) {
+			matrix[i][0] = matrix[i - 1][0] && (s2.charAt(i - 1) == s3.charAt(i - 1));
+		}
+
+		for (int i = 1; i < matrix.length; i++) {
+			for (int j = 1; j < matrix[0].length; j++) {
+				matrix[i][j] = (matrix[i - 1][j] && (s2.charAt(i - 1) == s3.charAt(i + j - 1)))
+						|| (matrix[i][j - 1] && (s1.charAt(j - 1) == s3.charAt(i + j - 1)));
+			}
+		}
+
+		return matrix[s2.length()][s1.length()];
+	}
+
+	// 回溯法，可以通过
+	public boolean isInterleave(String s1, String s2, String s3) {
+		if (s1.length() + s2.length() != s3.length())
+			return false;
+		return search_down(s1, 0, s2, 0, s3, 0);
+	}
+
+	boolean search_down(String s1, Integer s1_start, String s2, Integer s2_start, String s3, int s3_staart) {
+		if (s3_staart == s3.length())
+			return true;
+
+		if (s1_start < s1.length() && s1.charAt(s1_start) != s3.charAt(s3_staart) && s2_start < s2.length()
+				&& s2.charAt(s2_start) != s3.charAt(s3_staart))
+			return false;
+
+		boolean re = false;
+		if (s1_start < s1.length() && s1.charAt(s1_start) == s3.charAt(s3_staart)) {
+			re = search_down(s1, s1_start + 1, s2, s2_start, s3, s3_staart + 1);
+		}
+
+		if (s2_start < s2.length() && s2.charAt(s2_start) == s3.charAt(s3_staart)) {
+			re |= search_down(s1, s1_start, s2, s2_start + 1, s3, s3_staart + 1);
+		}
+
+		return re;
+	}
+
+}
+
 // 背包问题
 class Solution_Ninth_leval_9 {
 	/**
@@ -25,20 +124,21 @@ class Solution_Ninth_leval_9 {
 	 * @return: The maximum size
 	 */
 	public int backPack(int m, int[] A) {
-		int[] r = new int[m + 1];
-		Arrays.sort(A);
-		for (int i = 1; i <= m; i++) {
-			for (int j = 0; j < A.length; j++) {
-				if (A[j] > i) {
-					break;
-				} else {
-					r[i] = Math.max(r[i], r[i - A[j]] + A[j]);
-				}
+		int[][] dp = new int[A.length][m + 1];
 
+		for (int j = 1; j < m + 1; j++) {
+			if (A[0] <= j) {
+				dp[0][j] = A[0];
 			}
-
+			for (int i = 1; i < A.length; i++) {
+				if (A[i] > j) {
+					dp[i][j] = dp[i - 1][j];
+				} else {
+					dp[i][j] = Math.max(dp[i - 1][j - A[i]] + A[i], dp[i - 1][j]);
+				}
+			}
 		}
-		return r[m];
+		return dp[A.length - 1][m];
 	}
 }
 
@@ -76,21 +176,16 @@ class Trie {
 		char[] word_arr = word.toCharArray();
 		for (int i = 0; i < word_arr.length; i++) {
 			char wc = word_arr[i];
-			if (cur_children.containsKey(wc)) {
-				cur = cur_children.get(wc);
-			} else {
+			cur = cur_children.get(wc);
+			if (cur == null) {
 				TrieNode new_node = new TrieNode(wc);
 				cur_children.put(wc, new_node);
 				cur = new_node;
 			}
 
 			cur_children = cur.children;
-
-			if (i == word_arr.length - 1) {
-				cur.has_word = true;
-			}
 		}
-
+		cur.has_word = true;
 	}
 
 	// Returns if the word is in the trie.
@@ -101,17 +196,14 @@ class Trie {
 		char[] word_arr = word.toCharArray();
 		for (int i = 0; i < word_arr.length; i++) {
 			char wc = word_arr[i];
-			if (cur_children.containsKey(wc)) {
-				cur = cur_children.get(wc);
+			cur = cur_children.get(wc);
+			if (cur != null) {
 				cur_children = cur.children;
 			} else {
 				return false;
 			}
-			if (i == word_arr.length - 1) {
-				return cur.has_word;
-			}
 		}
-		return false;
+		return cur.has_word;
 	}
 }
 
@@ -131,11 +223,22 @@ class Solution_Ninth_leval_8 {
 		for (String word : dict) {
 			word_dict.insert(word);
 		}
+
+		Trie second_word_dict = new Trie();
+		String temp;
 		for (int i = 1; i < len + 1; i++) {
-			for (int j = 0; j < i; j++) {
-				if (f[j] && word_dict.search(s.substring(j, i))) {
-					f[i] = true;
-					break;
+			for (int j = i - 1; j >= 0; j--) {
+				temp = s.substring(j, i);
+				if (f[j]) {
+					if (second_word_dict.search(temp)) {
+						f[i] = true;
+						break;
+					}
+					if (word_dict.search(temp)) {
+						second_word_dict.insert(temp);
+						f[i] = true;
+						break;
+					}
 				}
 			}
 		}
