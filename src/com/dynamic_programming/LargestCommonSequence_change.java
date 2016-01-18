@@ -17,57 +17,26 @@ public class LargestCommonSequence_change {
 	}
 
 	public static int lcs_first(char[] s1, int len1, char[] s2, int len2) {
-		int[][] ji_hao = new int[len1][len2];
+		int[][] ji_hao = new int[len1 + 1][len2 + 1];
 
 		int i, j;
-		for (i = 0; i < len1; i++) {
-			for (j = 0; j < len2; j++) {
-				if (s1[i] == s2[j]) {
-					if (i - 1 >= 0 && j - 1 >= 0) {
-						ji_hao[i][j] = ji_hao[i - 1][j - 1] + 1;
-					} else {
-						if (i - 1 >= 0) {
-							ji_hao[i][j] = ji_hao[i - 1][j];
-							continue;
-						}
-						if (j - 1 >= 0) {
-							ji_hao[i][j] = ji_hao[i][j - 1];
-							continue;
-						}
-						ji_hao[i][j] = 1;
-					}
+		for (i = 1; i <= len1; i++) {
+			for (j = 1; j <= len2; j++) {
+				if (s1[i - 1] == s2[j - 1]) {
+					ji_hao[i][j] = ji_hao[i - 1][j - 1] + 1;
 				} else {
-					if (i - 1 >= 0) {
-						if (j - 1 >= 0) {
-							ji_hao[i][j] = Math.max(ji_hao[i - 1][j], ji_hao[i][j - 1]);
-						} else {
-							ji_hao[i][j] = ji_hao[i - 1][j];
-						}
-					} else {
-						if (j - 1 >= 0) {
-							ji_hao[i][j] = ji_hao[i][j - 1];
-						} else {
-							continue;
-						}
-					}
+					ji_hao[i][j] = Math.max(ji_hao[i - 1][j], ji_hao[i][j - 1]);
 				}
 			}
 		}
 
-		int max = 0;
-		for (i = 0; i < len1; i++) {
-			for (j = 0; j < len2; j++) {
-				if (ji_hao[i][j] > max) {
-					max = ji_hao[i][j];
-				}
-			}
-		}
+		System.out.println("last: " + ji_hao[len1][len2]);
 
-		StringBuffer sb = new StringBuffer();
-		print_lcs(ji_hao, s1, len1 - 1, s2, len2 - 1, sb);
-		System.out.println(sb.toString() + "  " + sb.length());
+		// StringBuffer sb = new StringBuffer();
+		// print_lcs(ji_hao, s1, len1 - 1, s2, len2 - 1, sb);
+		// System.out.println(sb.toString() + " " + sb.length());
 
-		return max + 1;
+		return ji_hao[len1][len2];
 	}
 
 	// 打印出最长公共子序列

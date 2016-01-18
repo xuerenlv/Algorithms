@@ -15,7 +15,59 @@ public class Ninth_leval {
 
 }
 
-// 最小调整代价
+// 最长上升子序列
+class Solution_Ninth_leval_14 {
+	/**
+	 * @param nums:
+	 *            The integer array
+	 * @return: The length of LIS (longest increasing subsequence)
+	 */
+	public int longestIncreasingSubsequence(int[] nums) {
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+}
+
+// 最长公共子序列
+class Solution_Ninth_leval_13 {
+	/**
+	 * @param A,
+	 *            B: Two strings.
+	 * @return: The length of longest common subsequence of A and B.
+	 */
+	public int longestCommonSubsequence(String A, String B) {
+		if (A == null || B == null || A.length() == 0 || B.length() == 0)
+			return 0;
+		return lcs_first(A.toCharArray(), A.length(), B.toCharArray(), B.length());
+	}
+
+	int lcs_first(char[] s1, int len1, char[] s2, int len2) {
+		int[][] ji_hao = new int[len1 + 1][len2 + 1];
+
+		int i, j;
+		for (i = 1; i <= len1; i++) {
+			for (j = 1; j <= len2; j++) {
+				if (s1[i - 1] == s2[j - 1]) {
+					ji_hao[i][j] = ji_hao[i - 1][j - 1] + 1;
+				} else {
+					ji_hao[i][j] = Math.max(ji_hao[i - 1][j], ji_hao[i][j - 1]);
+				}
+			}
+		}
+
+		return ji_hao[len1][len2];
+	}
+}
+
+// 最小调整代价 非常有趣的问题
 class Solution_Ninth_leval_12 {
 	/**
 	 * @param A:
@@ -23,11 +75,35 @@ class Solution_Ninth_leval_12 {
 	 * @param target:
 	 *            An integer.
 	 */
-	public int MinAdjustmentCost(ArrayList<Integer> A, int target) {
-		
-		
-		
-		
+	public int MinAdjustmentCost(ArrayList<Integer> nums, int target) {
+		if (nums == null || nums.size() == 1)
+			return 0;
+		int len = nums.size();
+
+		int[][] dp = new int[len][101];
+		for (int i = 0; i < len; i++)
+			dp[0][i] = Math.abs(nums.get(0) - i);
+
+		for (int i = 1; i < len; i++) {
+			for (int j = 0; j < 101; j++) {
+				dp[i][j] = Integer.MAX_VALUE;
+
+				int diff = Math.abs(j - nums.get(i));
+				int upper = Math.min(j + target, 100);
+				int lower = Math.max(j - target, 0);
+
+				for (int k = lower; k <= upper; k++) {
+					dp[i][j] = Math.min(dp[i][j], dp[i - 1][k] + diff);
+				}
+			}
+		}
+
+		int ret = Integer.MAX_VALUE;
+		for (int i = 0; i < 101; i++) {
+			ret = Math.min(ret, dp[len - 1][i]);
+		}
+
+		return ret;
 	}
 }
 
