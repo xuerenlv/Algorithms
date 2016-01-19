@@ -1,18 +1,195 @@
 package com.america_leval;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import org.omg.PortableInterceptor.INACTIVE;
 
 public class Ninth_leval {
 
 	public static void main(String[] args) {
 		// System.out.println(new Solution_Ninth_leval_2().climbStairs(4));
-		int[] A = { 3, 6, 5, 8 };
-		System.out.println(new Solution_Ninth_leval_9().backPack(10, A));
+		// int[] A = { 3, 6, 5, 8 };
+		// System.out.println(new Solution_Ninth_leval_9().backPack(10, A));
+
+		int[] A = { -1, -1 };
+		ArrayList<Integer> nums = new ArrayList<>();
+		nums.add(-1);
+		nums.add(-2);
+		nums.add(-3);
+		nums.add(-100);
+		nums.add(-1);
+		nums.add(-50);
+		System.out.println(new Solution_Ninth_leval_16().maxTwoSubArrays(nums));
 	}
 
+}
+
+// 最大子数组 III
+class Solution_Ninth_leval_17 {
+	/**
+	 * @param nums:
+	 *            A list of integers
+	 * @param k:
+	 *            An integer denote to find k non-overlapping subarrays
+	 * @return: An integer denote the sum of max k non-overlapping subarrays
+	 */
+	public int maxSubArray(int[] nums, int k) {
+		if (nums == null || nums.length < k)
+			return 0;
+
+		int[][] dp = new int[nums.length + 1][k + 1];
+
+		for (int i = 1; i <= nums.length; i++) {
+			for (int j = 1; j <= Math.min(i, k); j++) {
+				int endMax = 0;
+				int mx = Integer.MIN_VALUE;
+				dp[i][j] = Integer.MIN_VALUE;
+				for (int p = i; p >= j; p--) {
+					endMax = Math.max(nums[p - 1], nums[p - 1] + endMax);
+					mx = Math.max(mx, endMax);
+					dp[i][j] = Math.max(dp[i][j], dp[p - 1][j - 1] + mx);
+				}
+			}
+		}
+
+		return dp[nums.length][k];
+	}
+}
+
+// 最大子数组 II
+class Solution_Ninth_leval_16 {
+	/**
+	 * @param nums:
+	 *            A list of integers
+	 * @return: An integer denotes the sum of max two non-overlapping subarrays
+	 */
+	public int maxTwoSubArrays(ArrayList<Integer> nums) {
+		if (nums == null || nums.size() == 0)
+			return 0;
+		if (nums.size() == 1)
+			return nums.get(0);
+
+		int[] larger_left = new int[nums.size()];
+		int[] larger_right = new int[nums.size()];
+
+		int max = nums.get(0);
+		int this_max = nums.get(0);
+		larger_left[0] = nums.get(0);
+		for (int i = 1; i < nums.size(); i++) {
+			this_max = Math.max(this_max + nums.get(i), nums.get(i));
+			max = Math.max(this_max, max);
+			larger_left[i] = max;
+		}
+
+		max = nums.get(nums.size() - 1);
+		this_max = nums.get(nums.size() - 1);
+		larger_right[nums.size() - 1] = max;
+		for (int i = nums.size() - 2; i >= 0; i--) {
+			this_max = Math.max(this_max + nums.get(i), nums.get(i));
+			max = Math.max(this_max, max);
+			larger_right[i] = max;
+		}
+
+		int re = Integer.MIN_VALUE;
+		for (int i = 1; i < nums.size(); i++)
+			re = Math.max(larger_left[i - 1] + larger_right[i], re);
+
+		return re;
+	}
+
+}
+
+// 最大子数组差
+class Solution_Ninth_leval_15 {
+	/**
+	 * @param nums:
+	 *            A list of integers
+	 * @return: An integer indicate the value of maximum difference between two
+	 *          Subarrays
+	 */
+	public int maxDiffSubArrays(int[] nums) {
+		if (nums == null || nums.length == 0)
+			return 0;
+		if (nums.length == 1)
+			return nums[0];
+
+		int deal_1 = deal(nums);
+
+		int i = 0, j = nums.length - 1;
+		int tmp;
+		while (i < j) {
+			tmp = nums[i];
+			nums[i] = nums[j];
+			nums[j] = tmp;
+			i++;
+			j--;
+		}
+
+		int deal_2 = deal(nums);
+
+		return Math.max(deal_1, deal_2);
+	}
+
+	int deal(int[] nums) {
+		int[] larger = new int[nums.length];
+		int[] small = new int[nums.length];
+
+		int max = nums[0];
+		int this_max = nums[0];
+		larger[0] = nums[0];
+		for (int i = 1; i < nums.length; i++) {
+			this_max = Math.max(this_max + nums[i], nums[i]);
+			max = Math.max(this_max, max);
+			larger[i] = max;
+		}
+
+		int min = nums[nums.length - 1];
+		int this_min = nums[nums.length - 1];
+		small[nums.length - 1] = min;
+		for (int i = nums.length - 2; i >= 0; i--) {
+			this_min = Math.min(this_min + nums[i], nums[i]);
+			min = Math.min(this_min, min);
+			small[i] = min;
+		}
+
+		int diff = 0;
+		for (int i = 1; i < nums.length; i++)
+			diff = Math.max(diff, Math.abs(larger[i - 1] - small[i]));
+
+		return diff;
+	}
+
+	public int minSubArray(ArrayList<Integer> nums) {
+		if (nums.size() == 0)
+			return 0;
+
+		int min = nums.get(0);
+		int this_min = nums.get(0);
+		for (int i = 1; i < nums.size(); i++) {
+			this_min = Math.min(this_min + nums.get(i), nums.get(i));
+			min = Math.min(this_min, min);
+		}
+
+		return min;
+	}
+
+	public int maxSubArray(int[] nums) {
+		if (nums.length == 0)
+			return 0;
+
+		int max = nums[0];
+		int this_max = nums[0];
+		for (int i = 1; i < nums.length; i++) {
+			this_max = Math.max(this_max + nums[i], nums[i]);
+			max = Math.max(this_max, max);
+		}
+
+		return max;
+	}
 }
 
 // 最长上升子序列
@@ -23,16 +200,22 @@ class Solution_Ninth_leval_14 {
 	 * @return: The length of LIS (longest increasing subsequence)
 	 */
 	public int longestIncreasingSubsequence(int[] nums) {
+		if (nums == null || nums.length == 0)
+			return 0;
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		int[] dp = new int[nums.length];
+		int max = 0;
+		for (int i = 0; i < nums.length; i++) {
+			dp[i] = 1;
+			for (int j = 0; j < i; j++) {
+				if (nums[i] >= nums[j]) {
+					dp[i] = Math.max(dp[i], dp[j] + 1);
+					max = Math.max(max, dp[i]);
+				}
+			}
+		}
+
+		return max;
 	}
 }
 
@@ -296,25 +479,17 @@ class Solution_Ninth_leval_8 {
 		f[0] = true;
 
 		Trie word_dict = new Trie();
+		int max_len = 0;
 		for (String word : dict) {
 			word_dict.insert(word);
+			max_len = Math.max(max_len, word.length());
 		}
 
-		Trie second_word_dict = new Trie();
-		String temp;
 		for (int i = 1; i < len + 1; i++) {
-			for (int j = i - 1; j >= 0; j--) {
-				temp = s.substring(j, i);
-				if (f[j]) {
-					if (second_word_dict.search(temp)) {
-						f[i] = true;
-						break;
-					}
-					if (word_dict.search(temp)) {
-						second_word_dict.insert(temp);
-						f[i] = true;
-						break;
-					}
+			for (int j = i - 1; j >= Math.max(0, i - 1 - max_len); j--) {// 限制一下搜索的长度，就不会超时了
+				if (f[j] && word_dict.search(s.substring(j, i))) {
+					f[i] = true;
+					break;
 				}
 			}
 		}
