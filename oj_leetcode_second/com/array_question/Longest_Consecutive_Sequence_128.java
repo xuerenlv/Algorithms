@@ -22,7 +22,6 @@ class Solution_Longest_Consecutive_Sequence_128 {
 
 		int res = 0;
 		int l1, l2;
-
 		while (!container.isEmpty()) {
 			int num = container.remove(0);
 			l1 = num + 1;

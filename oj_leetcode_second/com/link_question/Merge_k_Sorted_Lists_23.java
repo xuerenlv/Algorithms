@@ -1,11 +1,12 @@
 package com.link_question;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Merge_k_Sorted_Lists_23 {
 
 	public static void main(String[] args) {
-
+		List<ListNode> lists = new ArrayList<>();
 	}
 
 	// 别人的 分治法

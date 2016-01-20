@@ -5,11 +5,12 @@ import java.util.Stack;
 public class Largest_Rectangle_in_Histogram_84 {
 
 	public static void main(String[] args) {
-		// int[] height= {2,1,5,6,2,3};
-		int[] height = { 1, 1 };
+		int[] height = { 2, 1, 5, 6, 2, 3 };
+		// int[] height = { 1, 1 };
 
-		System.out.println(new Solution_Largest_Rectangle_in_Histogram_84().largestRectangleArea(height));
-		System.out.println(new Solution_Largest_Rectangle_in_Histogram_84().largestRectangleArea1(height));
+		System.out.println(new Solution_Largest_Rectangle_in_Histogram_84().largestRectangleArea_2(height));
+		// System.out.println(new
+		// Solution_Largest_Rectangle_in_Histogram_84().largestRectangleArea1(height));
 	}
 
 }
