@@ -57,9 +57,9 @@ public class Word2VEC {
 
 	private HashMap<String, float[]> wordMap = new HashMap<String, float[]>();
 
-	private int words;
-	private int size;
-	private int topNSize = 40;
+	private int	words;
+	private int	size;
+	private int	topNSize	= 40;
 
 	/**
 	 * 加载模型
