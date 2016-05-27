@@ -14,6 +14,20 @@ public class Jump_Game_55 {
 
 class Solution_Jump_Game_55 {
 
+	public boolean canJump_4(int[] nums) {
+		if (nums.length <= 1)
+			return true;
+
+		int cur = nums[0];
+		for (int i = 1; i < nums.length; i++) {
+			cur = Math.max(cur, nums[i - 1]) - 1;
+			if (cur < 0)
+				return false;
+		}
+
+		return cur >= 0;
+	}
+
 	// 因为最后只是对于，最后一个位置与0进行比较，进行返回
 	// 所以这里就可以不用存储所有的值
 	public boolean canJump_3(int[] nums) {

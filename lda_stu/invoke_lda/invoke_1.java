@@ -17,13 +17,13 @@ public class invoke_1 {
 		// "newdocs.dat"
 		option.alpha = 0.2;
 		option.beta = 0.1;
-		option.K = 15;
+		option.K = 70;
 		option.niters = 500;
 		option.savestep = 500;
-		option.twords = 20;
+		option.twords = 50;
 		option.modelName = "xhj_model_final";
 		option.dir = "./file/casestudy-en/";
-		option.dfile = "newdocs.dat";
+		option.dfile = "fa_tie_zui_duo.txt";
 		option.est = true;
 		
 		Estimator estimator = new Estimator();

@@ -3,7 +3,7 @@ package com.math_question;
 public class Palindrome_Number_9 {
 
 	public static void main(String[] args) {
-		System.out.println(new Solution_Palindrome_Number_9().isPalindrome(111));
+		System.out.println(new Solution_Palindrome_Number_9().isPalindrome(10211));
 	}
 
 }

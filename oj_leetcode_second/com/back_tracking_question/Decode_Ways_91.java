@@ -3,7 +3,7 @@ package com.back_tracking_question;
 public class Decode_Ways_91 {
 
 	public static void main(String[] args) {
-		String s = "9371597631128776948387197132267188677349946742344217846154932859125134924241649584251978418763151253";
+		String s = "1000";
 		long s1 = System.currentTimeMillis();
 		System.out.println(new Solution_Decode_Ways_91().numDecodings_1(s));
 		long s2 = System.currentTimeMillis();
