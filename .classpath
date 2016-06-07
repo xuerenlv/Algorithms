@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="nlp_er"/>
+	<classpathentry kind="src" path="oj_hero"/>
+	<classpathentry kind="src" path="oj_lintnode"/>
+	<classpathentry kind="src" path="Interview"/>
+	<classpathentry kind="src" path="oj_leetcode_second"/>
+	<classpathentry kind="src" path="lda_stu"/>
+	<classpathentry kind="src" path="word2vec_java"/>
+	<classpathentry kind="src" path="jdk_source_code"/>
+	<classpathentry kind="src" path="oj_leetcode_third"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/args4j-2.32.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
